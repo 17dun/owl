@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <title>Document</title> 
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" /> 
+  <style id="search_ls_css_top"></style> 
+  <style id="search_ls_css_btm">?></style>
+  <link rel="stylesheet" href="static/index.css">
+  <script src="static/zepto-src.js"></script>
+ </head> 
+ <body> 
+  <div id="page">
+   <div id="page_hd">
+    <div id="head">
+     <a id="logo" class="logo" href="/?ref=www_itl&amp;ms=1"></a>
+     <div id="h_tabs">
+      <a class="h_tab" href="javascript:void(0);"><span class="tabTx cur" id="wy">网页</span></a>
+      <a class="h_tab" href="http://map.baidu.com/?newmap=1&amp;ie=utf-8&amp;itj=45&amp;s=s%26wd%3D%E5%AE%8C%E7%BE%8E%E4%B8%96%E7%95%8C857&amp;ssid=0&amp;from=0&amp;bd_page_type=1&amp;uid=0&amp;pu=usm@0,sz@1320_2001,ta@iphone_1_4.2_3_533&amp;wtj=ws"><span class="tabTx">地图</span></a>
+      <a class="h_tab" href="http://tieba.baidu.com/f?from=0&amp;bd_page_type=1&amp;ssid=0&amp;uid=0&amp;ref=www_iphone&amp;pu=usm%400%2Csz%401320_2001%2Cta%40iphone_1_4.2_3_533&amp;lid=1201171576006154466&amp;baiduid=FDBEC9F303D83D77551E0F779D9764C8&amp;mo_device=1&amp;vit=www_nav&amp;kw=%E5%AE%8C%E7%BE%8E%E4%B8%96%E7%95%8C857"><span class="tabTx">贴吧</span></a>
+      <a class="h_tab" href="http://baidu.app111.com/app?action=search&amp;baiduindex#word=%E5%AE%8C%E7%BE%8E%E4%B8%96%E7%95%8C857"><span class="tabTx">应用</span></a>
+      <a class="h_tab" id="switchBt"><span id="mo" class="tabTx more">更多<span id="arr" class="arrow top"></span></span></a>
+     </div>
+     <div id="more">
+      <div class="more_links">
+       <a href="http://m.baidu.com/news?from=0&amp;bd_page_type=1&amp;ssid=0&amp;uid=0&amp;ref=www_iphone&amp;pu=usm%400%2Csz%401320_2001%2Cta%40iphone_1_4.2_3_533&amp;lid=1201171576006154466&amp;baiduid=FDBEC9F303D83D77551E0F779D9764C8&amp;fr=searchresult01#search/%E5%AE%8C%E7%BE%8E%E4%B8%96%E7%95%8C857">新闻</a>
+       <a href="http://wapiknow.baidu.com/index/?st=3&amp;ref=www_iphone&amp;word=%E5%AE%8C%E7%BE%8E%E4%B8%96%E7%95%8C857&amp;ssid=0&amp;from=0&amp;bd_page_type=1&amp;uid=0&amp;pu=usm@0,sz@1320_2001,ta@iphone_1_4.2_3_533">知道</a>
+       <a href="http://wapbaike.baidu.com/search?st=3&amp;ref=www_iphone&amp;word=%E5%AE%8C%E7%BE%8E%E4%B8%96%E7%95%8C857&amp;ssid=0&amp;from=0&amp;bd_page_type=1&amp;uid=0&amp;pu=usm@0,sz@1320_2001,ta@iphone_1_4.2_3_533">百科</a>
+       <a href="http://m.baidu.com/s?tn=bdLISTIphone&amp;st=10312i&amp;pn=0&amp;rn=20&amp;word=%E5%AE%8C%E7%BE%8E%E4%B8%96%E7%95%8C857&amp;ssid=0&amp;from=0&amp;bd_page_type=1&amp;uid=0&amp;pu=usm@0,sz@1320_2001,ta@iphone_1_4.2_3_533">图片</a>
+      </div>
+      <div class="more_links">
+       <a href="http://m.baidu.com/s?tn=bdx&amp;st=105141&amp;word=%E5%AE%8C%E7%BE%8E%E4%B8%96%E7%95%8C857&amp;ssid=0&amp;from=0&amp;bd_page_type=1&amp;uid=0&amp;pu=usm@0,sz@1320_2001,ta@iphone_1_4.2_3_533">小说</a>
+       <a href="http://wk.baidu.com/search?ref=www_iphone&amp;word=%E5%AE%8C%E7%BE%8E%E4%B8%96%E7%95%8C857&amp;ssid=0&amp;from=0&amp;bd_page_type=1&amp;uid=0&amp;pu=usm@0,sz@1320_2001,ta@iphone_1_4.2_3_533">文库</a>
+       <a href="http://music.baidu.com/s?f=ms&amp;itn=baidump3mobile&amp;rf=mobile&amp;ct=671088640&amp;lf=&amp;rn=20&amp;lm=0&amp;gate=33&amp;ie=utf-8&amp;ref=www_iphone&amp;key=%E5%AE%8C%E7%BE%8E%E4%B8%96%E7%95%8C857&amp;ssid=0&amp;from=0&amp;bd_page_type=1&amp;uid=0&amp;pu=usm@0,sz@1320_2001,ta@iphone_1_4.2_3_533">音乐</a>
+       <a href="http://m.video.baidu.com?ie=utf-8&amp;ref=www_iphone&amp;wtj=ws&amp;ssid=0&amp;from=0&amp;bd_page_type=1&amp;uid=0&amp;pu=usm@0,sz@1320_2001,ta@iphone_1_4.2_3_533#search=%E5%AE%8C%E7%BE%8E%E4%B8%96%E7%95%8C857">视频</a>
+      </div>
+     </div>
+    </div>
+    <div class="searchboxtop">
+     <form data-formposition="t" class="se-form" id="se-form" action="/s" method="get" autocomplete="off">
+      <div class="con-wrap">
+       <textarea autocomplete="off" autocorrect="off" maxlength="64" id="kw" name="word" class="se-input adjust-input" data-sug="1">完美世界857</textarea>
+       <div class="se-inner">
+        <div id="cross" class="cross"></div>
+        <button id="se_bn" class="se-bn" type="submit"><span>百度一下</span></button>
+       </div>
+      </div>
+      <div id="se_box" class="se_box">
+       <div class="suggest-div" style="display: none;">
+        <div class="suggest-direct"></div>
+        <div class="suggest-panel">
+         <div class="suggest-content"></div>
+         <div class="suggest-oper sug-active-his">
+          <div class="suggest-oper-his sug-oper-btn">
+           历史记录
+          </div>
+          <div class="suggest-oper-at sug-oper-btn">
+           直达号
+          </div>
+         </div>
+        </div>
+        <div class="suggest-title">
+         <div class="suggest-logo"></div>
+         <div class="history-clear">
+          清除历史记录
+         </div>
+         <div class="suggest-at">
+          直达号
+         </div>
+        </div>
+        <div class="suggest-close">
+         关闭
+        </div>
+       </div>
+      </div>
+      <input type="hidden" name="sa" value="tb" />
+      <input type="hidden" name="ts" value="0" />
+      <input type="hidden" name="t_kt" value="0" />
+     </form>
+    </div>
+   </div>
+   <style id="css_onlyanswer" type="text/css"></style>
+   <div id="page_bd">
+    <div id="page_tips"></div>
+    <div id="results" class="results">
+    
+     <div class="result">
+      <a class="result_title" href="http://m.baidu.com/from=0/bd_page_type=1/ssid=0/uid=0/pu=usm%400%2Csz%401320_2001%2Cta%40iphone_1_4.2_3_533/baiduid=FDBEC9F303D83D77551E0F779D9764C8/w=0_10_%E5%AE%8C%E7%BE%8E%E4%B8%96%E7%95%8C857/t=iphone/l=3/tc?ref=www_iphone&amp;lid=1201171576006154466&amp;order=1&amp;vit=osres&amp;tj=www_normal_1_0_10&amp;m=8&amp;srd=1&amp;cltj=cloud_title&amp;dict=30&amp;sec=42411&amp;di=5b632e8615cbf137&amp;bdenc=1&amp;nsrc=IlPT2AEptyoA_yixCFOxXnANedT62v3IEQGG_yBF0Se8iI39h47aUbBtVj0bKXjTUS3ccz0NtgoDlnGj_WYp9BFZhOgtfq">第八百五十七章 过关 <em>完美世界857</em> 诺秋网
+       <div class="result_title_abs">
+        首页奇幻小说完美世界完美世界目录第八百五十七章 过关第八百五十七章 过关 
+        <em>完美世界857</em> 作者:辰东本站所收录...
+       </div></a>
+      <div class="result_snippet"></div>
+      <span class="site">www.nuoqiu.com</span>&nbsp;
+      <span class="size">4k</span>
+      <div class="recommend_wrap">
+       <a href="http://m.baidu.com/s?word=%E5%AE%8C%E7%BE%8E%E4%B8%96%E7%95%8C857+%E5%85%AB%E7%99%BE%E4%BA%94%E5%8D%81%E4%B8%83&amp;sa=cr">查看更多关于“<em>完美世界857 八百五十七</em>”的内容 &gt;&gt;</a>
+      </div>
+     </div>
+     
+
+     <div class="result">
+      <a class="result_title" href="http://m.baidu.com/from=0/bd_page_type=1/ssid=0/uid=0/pu=usm%400%2Csz%401320_2001%2Cta%40iphone_1_4.2_3_533/baiduid=FDBEC9F303D83D77551E0F779D9764C8/w=0_10_%E5%AE%8C%E7%BE%8E%E4%B8%96%E7%95%8C857/t=iphone/l=1/tc?ref=www_iphone&amp;lid=1201171576006154466&amp;order=4&amp;vit=osres&amp;tj=www_normal_4_0_10&amp;cltj=normal_title&amp;dict=-1&amp;sec=42411&amp;di=445151a6a3fb40c6&amp;bdenc=1&amp;nsrc=IlPT2AEptyoA_yixCFOxXnANedT62v3IJBSC_zcG_8SdnE3qffmlItdnJ7HNRH3IJkTxeT4PsxcDx8K70nkn6so4g43"><em>完美世界</em>国际版任务大全 - 云渊万流城 - 《<em>完美国际</em>》....
+       <div class="result_title_abs">
+        <em>完美世界</em>国际版任务大全 序号 等级 任务NPC 任务名称 任务 交任务 声望1J 新手指南 小试身手 杀10青蚨或...
+       </div></a>
+      <div class="result_snippet"></div>
+      <span class="site">bbs.w2i.wanmei.com</span>&nbsp;
+      <span class="size">58k</span>
+      <div class="recommend_wrap">
+       <a href="http://m.baidu.com/s?word=%E5%AE%8C%E7%BE%8E%E4%B8%96%E7%95%8C%E5%9B%BD%E9%99%85%E7%89%88%E4%BB%BB%E5%8A%A1%E5%A4%A7%E5%85%A8&amp;sa=cr">查看更多关于“<em>完美世界国际版任务大全</em>”的内容 &gt;&gt;</a>
+      </div>
+     </div>
+     <div class="result">
+      <a class="result_title" href="http://m.baidu.com/from=0/bd_page_type=1/ssid=0/uid=0/pu=usm%400%2Csz%401320_2001%2Cta%40iphone_1_4.2_3_533/baiduid=FDBEC9F303D83D77551E0F779D9764C8/w=0_10_%E5%AE%8C%E7%BE%8E%E4%B8%96%E7%95%8C857/t=iphone/l=3/tc?ref=www_iphone&amp;lid=1201171576006154466&amp;order=5&amp;vit=osres&amp;tj=www_normal_5_0_10&amp;m=8&amp;srd=1&amp;cltj=cloud_title&amp;dict=20&amp;sec=42411&amp;di=a0d7b2e7a115f387&amp;bdenc=1&amp;nsrc=IlPT2AEptyoA_yixCFOxXnANedT62v3IEQGG_ypLBzKbokm7huWlItdnHDD62Sm5FET8uWOHccVMai8u3mRU7B21r0IwdzZz">第<em>857</em>章 过关 &laquo; <em>完美世界</em>小说_<em>完美世界</em>辰东txt下载...
+       <div class="result_title_abs">
+        第
+        <em>857</em>章 过关所属目录:
+        <em>完美世界</em> 发布时间:2014-09-23 作者:辰东这里有很多座山,全都如火山般,内部中空,...
+       </div></a>
+      <div class="result_snippet"></div>
+      <span class="site">www.douluodalu.com.cn</span>&nbsp;
+      <span class="size">27k</span>
+      <div class="recommend_wrap">
+       <a href="http://m.baidu.com/s?word=%E5%AE%8C%E7%BE%8E%E4%B8%96%E7%95%8C857+%E5%B0%8F%E8%AF%B4&amp;sa=cr">查看更多关于“<em>完美世界857 小说</em>”的内容 &gt;&gt;</a>
+      </div>
+     </div>
+     <div class="result">
+      <a class="result_title" href="http://m.baidu.com/from=0/bd_page_type=1/ssid=0/uid=0/pu=usm%400%2Csz%401320_2001%2Cta%40iphone_1_4.2_3_533/baiduid=FDBEC9F303D83D77551E0F779D9764C8/w=0_10_%E5%AE%8C%E7%BE%8E%E4%B8%96%E7%95%8C857/t=iphone/l=3/tc?ref=www_iphone&amp;lid=1201171576006154466&amp;order=6&amp;vit=osres&amp;tj=www_normal_6_0_10&amp;m=8&amp;srd=1&amp;cltj=cloud_title&amp;dict=30&amp;sec=42411&amp;di=b9f5a145ecc69935&amp;bdenc=1&amp;nsrc=IlPT2AEptyoA_yixCFOxXnANedT62v3IIBuPNCBX28S8m5itf0rgHtkfEFXuQGfTUS46tSPQptpCgzD9PDsz7qQbig9UvVQq7Ue"><em>完美世界</em>(PWRD)美股行情_行情中心_财经_凤凰网
+       <div class="result_title_abs result_title_abs_lr">
+        <div class="result_title_abs_left">
+         提供
+         <em>完美世界</em>(PWRD)的股票行情,股票大单,资金流向,F10资料,公司新闻,公司公告,财务数据,股票博客,股票论坛等
+        </div>
+        <div class="result_title_abs_right">
+         <img class="result-img-delay" src="http://cdn01.baidu-img.cn/timg?wisealaddin&amp;size=6&amp;quality=80&amp;sec=1414120782&amp;di=9511933472d5bbf821d4eafd73d12daf&amp;src=http%3A%2F%2Fi7.baidu.com%2Fit%2Fu%3D3080114929%2C2409256491%26fm%3D96" />
+        </div>
+       </div></a>
+      <div class="result_snippet"></div>
+      <span class="site">finance.ifeng.com</span>&nbsp;
+      <span class="size">103k</span>
+      <div class="recommend_wrap">
+       <a href="http://m.baidu.com/s?word=%E5%AE%8C%E7%BE%8E%E4%B8%96%E7%95%8C&amp;sa=cr">查看更多关于“<em>完美世界</em>”的内容 &gt;&gt;</a>
+      </div>
+     </div>
+          <div class="result">
+      <a class="result_title" href="http://m.baidu.com/from=0/bd_page_type=1/ssid=0/uid=0/pu=usm%400%2Csz%401320_2001%2Cta%40iphone_1_4.2_3_533/baiduid=FDBEC9F303D83D77551E0F779D9764C8/w=0_10_%E5%AE%8C%E7%BE%8E%E4%B8%96%E7%95%8C857/t=iphone/l=3/tc?ref=www_iphone&amp;lid=1201171576006154466&amp;order=6&amp;vit=osres&amp;tj=www_normal_6_0_10&amp;m=8&amp;srd=1&amp;cltj=cloud_title&amp;dict=30&amp;sec=42411&amp;di=b9f5a145ecc69935&amp;bdenc=1&amp;nsrc=IlPT2AEptyoA_yixCFOxXnANedT62v3IIBuPNCBX28S8m5itf0rgHtkfEFXuQGfTUS46tSPQptpCgzD9PDsz7qQbig9UvVQq7Ue"><em>完美世界</em>(PWRD)美股行情_行情中心_财经_凤凰网
+       <div class="result_title_abs result_title_abs_lr">
+        <div class="result_title_abs_left">
+         提供
+         <em>完美世界</em>(PWRD)的股票行情,股票大单,资金流向,F10资料,公司新闻,公司公告,财务数据,股票博客,股票论坛等
+        </div>
+        <div class="result_title_abs_right">
+         <img class="result-img-delay" src="http://cdn01.baidu-img.cn/timg?wisealaddin&amp;size=6&amp;quality=80&amp;sec=1414120782&amp;di=9511933472d5bbf821d4eafd73d12daf&amp;src=http%3A%2F%2Fi7.baidu.com%2Fit%2Fu%3D3080114929%2C2409256491%26fm%3D96" />
+        </div>
+       </div></a>
+      <div class="result_snippet"></div>
+      <span class="site">finance.ifeng.com</span>&nbsp;
+      <span class="size">103k</span>
+      <div class="recommend_wrap">
+       <a href="http://m.baidu.com/s?word=%E5%AE%8C%E7%BE%8E%E4%B8%96%E7%95%8C&amp;sa=cr">查看更多关于“<em>完美世界</em>”的内容 &gt;&gt;</a>
+      </div>
+     </div>
+          <div class="result">
+      <a class="result_title" href="http://m.baidu.com/from=0/bd_page_type=1/ssid=0/uid=0/pu=usm%400%2Csz%401320_2001%2Cta%40iphone_1_4.2_3_533/baiduid=FDBEC9F303D83D77551E0F779D9764C8/w=0_10_%E5%AE%8C%E7%BE%8E%E4%B8%96%E7%95%8C857/t=iphone/l=3/tc?ref=www_iphone&amp;lid=1201171576006154466&amp;order=6&amp;vit=osres&amp;tj=www_normal_6_0_10&amp;m=8&amp;srd=1&amp;cltj=cloud_title&amp;dict=30&amp;sec=42411&amp;di=b9f5a145ecc69935&amp;bdenc=1&amp;nsrc=IlPT2AEptyoA_yixCFOxXnANedT62v3IIBuPNCBX28S8m5itf0rgHtkfEFXuQGfTUS46tSPQptpCgzD9PDsz7qQbig9UvVQq7Ue"><em>完美世界</em>(PWRD)美股行情_行情中心_财经_凤凰网
+       <div class="result_title_abs result_title_abs_lr">
+        <div class="result_title_abs_left">
+         提供
+         <em>完美世界</em>(PWRD)的股票行情,股票大单,资金流向,F10资料,公司新闻,公司公告,财务数据,股票博客,股票论坛等
+        </div>
+        <div class="result_title_abs_right">
+         <img class="result-img-delay" src="http://cdn01.baidu-img.cn/timg?wisealaddin&amp;size=6&amp;quality=80&amp;sec=1414120782&amp;di=9511933472d5bbf821d4eafd73d12daf&amp;src=http%3A%2F%2Fi7.baidu.com%2Fit%2Fu%3D3080114929%2C2409256491%26fm%3D96" />
+        </div>
+       </div></a>
+      <div class="result_snippet"></div>
+      <span class="site">finance.ifeng.com</span>&nbsp;
+      <span class="size">103k</span>
+      <div class="recommend_wrap">
+       <a href="http://m.baidu.com/s?word=%E5%AE%8C%E7%BE%8E%E4%B8%96%E7%95%8C&amp;sa=cr">查看更多关于“<em>完美世界</em>”的内容 &gt;&gt;</a>
+      </div>
+     </div>
+          <div class="result">
+      <a class="result_title" href="http://m.baidu.com/from=0/bd_page_type=1/ssid=0/uid=0/pu=usm%400%2Csz%401320_2001%2Cta%40iphone_1_4.2_3_533/baiduid=FDBEC9F303D83D77551E0F779D9764C8/w=0_10_%E5%AE%8C%E7%BE%8E%E4%B8%96%E7%95%8C857/t=iphone/l=3/tc?ref=www_iphone&amp;lid=1201171576006154466&amp;order=6&amp;vit=osres&amp;tj=www_normal_6_0_10&amp;m=8&amp;srd=1&amp;cltj=cloud_title&amp;dict=30&amp;sec=42411&amp;di=b9f5a145ecc69935&amp;bdenc=1&amp;nsrc=IlPT2AEptyoA_yixCFOxXnANedT62v3IIBuPNCBX28S8m5itf0rgHtkfEFXuQGfTUS46tSPQptpCgzD9PDsz7qQbig9UvVQq7Ue"><em>完美世界</em>(PWRD)美股行情_行情中心_财经_凤凰网
+       <div class="result_title_abs result_title_abs_lr">
+        <div class="result_title_abs_left">
+         提供
+         <em>完美世界</em>(PWRD)的股票行情,股票大单,资金流向,F10资料,公司新闻,公司公告,财务数据,股票博客,股票论坛等
+        </div>
+        <div class="result_title_abs_right">
+         <img class="result-img-delay" src="http://cdn01.baidu-img.cn/timg?wisealaddin&amp;size=6&amp;quality=80&amp;sec=1414120782&amp;di=9511933472d5bbf821d4eafd73d12daf&amp;src=http%3A%2F%2Fi7.baidu.com%2Fit%2Fu%3D3080114929%2C2409256491%26fm%3D96" />
+        </div>
+       </div></a>
+      <div class="result_snippet"></div>
+      <span class="site">finance.ifeng.com</span>&nbsp;
+      <span class="size">103k</span>
+      <div class="recommend_wrap">
+       <a href="http://m.baidu.com/s?word=%E5%AE%8C%E7%BE%8E%E4%B8%96%E7%95%8C&amp;sa=cr">查看更多关于“<em>完美世界</em>”的内容 &gt;&gt;</a>
+      </div>
+     </div>
+          <div class="result">
+      <a class="result_title" href="http://m.baidu.com/from=0/bd_page_type=1/ssid=0/uid=0/pu=usm%400%2Csz%401320_2001%2Cta%40iphone_1_4.2_3_533/baiduid=FDBEC9F303D83D77551E0F779D9764C8/w=0_10_%E5%AE%8C%E7%BE%8E%E4%B8%96%E7%95%8C857/t=iphone/l=3/tc?ref=www_iphone&amp;lid=1201171576006154466&amp;order=6&amp;vit=osres&amp;tj=www_normal_6_0_10&amp;m=8&amp;srd=1&amp;cltj=cloud_title&amp;dict=30&amp;sec=42411&amp;di=b9f5a145ecc69935&amp;bdenc=1&amp;nsrc=IlPT2AEptyoA_yixCFOxXnANedT62v3IIBuPNCBX28S8m5itf0rgHtkfEFXuQGfTUS46tSPQptpCgzD9PDsz7qQbig9UvVQq7Ue"><em>完美世界</em>(PWRD)美股行情_行情中心_财经_凤凰网
+       <div class="result_title_abs result_title_abs_lr">
+        <div class="result_title_abs_left">
+         提供
+         <em>完美世界</em>(PWRD)的股票行情,股票大单,资金流向,F10资料,公司新闻,公司公告,财务数据,股票博客,股票论坛等
+        </div>
+        <div class="result_title_abs_right">
+         <img class="result-img-delay" src="http://cdn01.baidu-img.cn/timg?wisealaddin&amp;size=6&amp;quality=80&amp;sec=1414120782&amp;di=9511933472d5bbf821d4eafd73d12daf&amp;src=http%3A%2F%2Fi7.baidu.com%2Fit%2Fu%3D3080114929%2C2409256491%26fm%3D96" />
+        </div>
+       </div></a>
+      <div class="result_snippet"></div>
+      <span class="site">finance.ifeng.com</span>&nbsp;
+      <span class="size">103k</span>
+      <div class="recommend_wrap">
+       <a href="http://m.baidu.com/s?word=%E5%AE%8C%E7%BE%8E%E4%B8%96%E7%95%8C&amp;sa=cr">查看更多关于“<em>完美世界</em>”的内容 &gt;&gt;</a>
+      </div>
+     </div>
+     <div class="result">
+      <a class="result_title" href="http://m.baidu.com/from=0/bd_page_type=1/ssid=0/uid=0/pu=usm%400%2Csz%401320_2001%2Cta%40iphone_1_4.2_3_533/baiduid=FDBEC9F303D83D77551E0F779D9764C8/w=0_10_%E5%AE%8C%E7%BE%8E%E4%B8%96%E7%95%8C857/t=iphone/l=1/tc?ref=www_iphone&amp;lid=1201171576006154466&amp;order=7&amp;vit=osres&amp;tj=www_normal_7_0_10&amp;cltj=normal_title&amp;dict=-1&amp;sec=42411&amp;di=0c5757d9669f13c5&amp;bdenc=1&amp;nsrc=IlPT2AEptyoA_yixCFOxXnANedT62v3IJBSC_zcG_8SdnE3qffmlItdnJ7HNRH3IJkTxeTfPshkGrXW70nhunM5X"><em>完美世界</em>国际版任务攻略 - 云渊万流城 - 《<em>完美国际</em>》....
+       <div class="result_title_abs">
+        (坐标:剑仙城郊外 428,
+        <em>857</em>),找到书之后,交给货郎... 
+        <em>完美世界</em>国际版任务攻略 天书任务是打一个怪,没...
+       </div></a>
+      <div class="result_snippet"></div>
+      <span class="site">bbs.w2i.wanmei.com</span>&nbsp;
+      <span class="size">127k</span>
+      <div class="recommend_wrap">
+       <a href="http://m.baidu.com/s?word=%E5%AE%8C%E7%BE%8E%E4%B8%96%E7%95%8C%E5%9B%BD%E9%99%85%E7%89%88%E4%BB%BB%E5%8A%A1%E6%94%BB%E7%95%A5&amp;sa=cr">查看更多关于“<em>完美世界国际版任务攻略</em>”的内容 &gt;&gt;</a>
+      </div>
+     </div>
+     <div class="result">
+      <a class="result_title" href="http://m.baidu.com/from=0/bd_page_type=1/ssid=0/uid=0/pu=usm%400%2Csz%401320_2001%2Cta%40iphone_1_4.2_3_533/baiduid=FDBEC9F303D83D77551E0F779D9764C8/w=0_10_%E5%AE%8C%E7%BE%8E%E4%B8%96%E7%95%8C857/t=iphone/l=3/tc?ref=www_iphone&amp;lid=1201171576006154466&amp;order=8&amp;vit=osres&amp;tj=www_normal_8_0_10&amp;m=8&amp;srd=1&amp;cltj=cloud_title&amp;dict=21&amp;sec=42411&amp;di=dd6be27cf6a3f40c&amp;bdenc=1&amp;nsrc=IlPT2AEptyoA_yixCFOxXnANedT62v3IEQGG_ypLBjfg95qshbrgHhEsRDLdNXWCZpPPdj0PtR5HtXLRKDVsjdk3fecoxmdNmSyqwO_kxsjS">...DOTA2挑战赛 - 《DOTA2》官方网站 - <em>完美世界</em>全球...
+       <div class="result_title_abs">
+        <span class="gray">2014年7月20日 - &nbsp;</span>浙江大区 宁波市 北仑区 富邦世纪店 0571-63377733 213029127 宁波市北仑区黄山路
+        <em>857</em>号富邦...
+       </div></a>
+      <div class="result_snippet"></div>
+      <span class="site">www.dota2.com.cn</span>&nbsp;
+      <span class="size">52k</span>
+     </div>
+     <div class="result">
+      <a class="result_title" href="http://m.baidu.com/from=0/bd_page_type=1/ssid=0/uid=0/pu=usm%400%2Csz%401320_2001%2Cta%40iphone_1_4.2_3_533/baiduid=FDBEC9F303D83D77551E0F779D9764C8/w=0_10_%E5%AE%8C%E7%BE%8E%E4%B8%96%E7%95%8C857/t=iphone/l=1/tc?ref=www_iphone&amp;lid=1201171576006154466&amp;order=9&amp;vit=osres&amp;tj=www_normal_9_0_10&amp;cltj=normal_title&amp;dict=-1&amp;sec=42411&amp;di=4e36a12ff7f6b5b8&amp;bdenc=1&amp;nsrc=IlPT2AEptyoA_yixCFOxXnANedT62v3IJBSC_zdLADKqz93kefriJN5oYTzy2Sm5JUbbsWvEcMVFtXPRQjdyzB1vavM6dC68mSisw3nqhNHXSQ1Oyw2kPgeWGHi">...- 《<em>完美世界</em>经典版》官方论坛 - Powered by Discuz!
+       <div class="result_title_abs">
+        《
+        <em>完美世界</em>经典版》官方论坛 &raquo;《
+        <em>完美世界</em>经典版》... 
+        <em>857</em> 点 金币 410 金 阅读权限 50 积分 2212 ...
+       </div></a>
+      <div class="result_snippet"></div>
+      <span class="site">bbs.world2.wanmei.com</span>&nbsp;
+      <span class="size">95k</span>
+     </div>
+     <div class="result">
+      <a class="result_title" href="http://m.baidu.com/from=0/bd_page_type=1/ssid=0/uid=0/pu=usm%400%2Csz%401320_2001%2Cta%40iphone_1_4.2_3_533/baiduid=FDBEC9F303D83D77551E0F779D9764C8/w=0_10_%E5%AE%8C%E7%BE%8E%E4%B8%96%E7%95%8C857/t=iphone/l=1/tc?ref=www_iphone&amp;lid=1201171576006154466&amp;order=10&amp;vit=osres&amp;tj=www_normal_10_0_10&amp;waput=2&amp;waplogo=1&amp;cltj=normal_title&amp;dict=21&amp;sec=42411&amp;di=fcd8c30319072b4c&amp;bdenc=1&amp;nsrc=IlPT2AEptyoA_yixCFOxXnANedT62v3IVRHPBHgJRTH5nk_qva02IddpWXKhVmmTIkGwdoSAfcBKtXLR0WMj8xlOrxo8ezpfnyibgPq3gR70HhEK"><em>完美世界857</em> 正文 第八百五十七章 过关-小说排行榜|...
+       <div class="result_title_abs">
+        东方玄幻小说《
+        <em>完美世界</em>》,第八百五十七章 过关,在线全文阅读
+       </div></a>
+      <div class="result_snippet"></div>
+      <span class="site">3g.1617k.com</span>&nbsp;
+      <div class="recommend_wrap">
+       <a href="http://m.baidu.com/s?word=%E5%AE%8C%E7%BE%8E%E4%B8%96%E7%95%8C857+%E5%B0%8F%E8%AF%B4&amp;sa=cr">查看更多关于“<em>完美世界857 小说</em>”的内容 &gt;&gt;</a>
+      </div>
+     </div>
+    </div>
+    <div id="page_controller">
+     <div id="pagenav" class="pagenav">
+      <div class="pagebar brand_bear">
+       下一页
+       <span class="ico"></span>
+      </div>
+     </div>
+    </div>
+    <div id="page_relative">
+     <div id="relativewords">
+      <div class="rw-title">
+       相关搜索
+      </div>
+      <div class="rw-list">
+       <a class="rw-item" href="http://m.baidu.com/s?word=%E5%AE%8C%E7%BE%8E%E4%B8%96%E7%95%8C&amp;rq=%E5%AE%8C%E7%BE%8E%E4%B8%96%E7%95%8C857&amp;sa=brs_1">完美世界</a>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div id="page_ft">
+    <div id="ft_wrap">
+     <div id="footer_wrap">
+      <form data-formposition="b" class="se-form" id="se-form2" action="/s" method="get" autocomplete="off">
+       <div class="con-wrap">
+        <textarea autocomplete="off" autocorrect="off" maxlength="64" id="kw2" name="word" class="se-input adjust-input" data-sug="1">完美世界857</textarea>
+        <div class="se-inner">
+         <div id="cross2" class="cross"></div>
+         <button id="se_bn2" class="se-bn" type="submit"><span>百度一下</span></button>
+        </div>
+       </div>
+       <div id="se_box2" class="se_box">
+        <div class="suggest-div" style="display: none;">
+         <div class="suggest-direct"></div>
+         <div class="suggest-panel">
+          <div class="suggest-content"></div>
+          <div class="suggest-oper sug-active-his">
+           <div class="suggest-oper-his sug-oper-btn">
+            历史记录
+           </div>
+           <div class="suggest-oper-at sug-oper-btn">
+            直达号
+           </div>
+          </div>
+         </div>
+         <div class="suggest-title">
+          <div class="suggest-logo"></div>
+          <div class="history-clear">
+           清除历史记录
+          </div>
+          <div class="suggest-at">
+           直达号
+          </div>
+         </div>
+         <div class="suggest-close">
+          关闭
+         </div>
+        </div>
+       </div>
+       <input type="hidden" name="sa" value="bb" />
+       <input type="hidden" name="ts" value="0" />
+       <input type="hidden" name="t_kt" value="0" />
+      </form>
+     </div>
+     <div class="footerlink"></div>
+    </div>
+   </div>
+   <div id="page_copyright">
+    <div class="return-link">
+     <a class="return-index brand_bear" href="/">百度首页</a>
+     <a class="feedback brand_bear" href="http://fb.baidu.com/s/index.php?tn=iphone&amp;word=%E5%AE%8C%E7%BE%8E%E4%B8%96%E7%95%8C857">用户反馈</a>
+    </div>
+    <div id="layout_switch">
+     <b class="switch_to_iphone">触屏版</b>
+     <a href="http://m.baidu.com/s?word=%E5%AE%8C%E7%BE%8E%E4%B8%96%E7%95%8C857&amp;pu=sz%401321_480&amp;wpo=fast" class="switch_to_utouch">极速版</a>
+    </div>
+    <div id="foot_logo">
+     <a id="logo" class="logo" href="/?ref=www_ibl&amp;ms=1"></a>
+    </div>
+    <div id="copyright">
+     Baidu&nbsp;京ICP证030173号
+    </div>
+   </div>
+   <textarea class="input_hidden"></textarea>
+   <div id="foot-blank"></div>
+   <input type="hidden" data-path="" data-prepath="ssid=0#from=0#bd_page_type=1#uid=0#pu=usm%400%2Csz%401320_2001%2Cta%40iphone_1_4.2_3_533#baiduid=FDBEC9F303D83D77551E0F779D9764C8" data-query="完美世界857" data-prequery="完美世界857" data-lid="1201171576006154466" data-ref="www_iphone" data-pn="0" data-rn="10" data-tn="" data-hasnp="1" data-sa="tb" data-ts="0" data-ms="0" data-usm="0" data-tanet="1" data-taspeed="97" data-vit="" data-browser="applewebkit" data-osid="1" data-iphoneid="" data-sugsid="3101" data-onlyshow="" data-spd="97" data-adflag="0" data-prefetch="0" data-spa="0" data-spath="" data-separam="" data-nojc="" data-sids="387_107_117" data-loginorder="before" id="commonBase" name="commonBase" />
+  </div>
+<style>
+	.visible{
+		background:rgb(212, 238, 212)
+	}
+
+
+</style>
+
+<script src="owl.js"></script>
+
+
+
+ </body>
+</html>
