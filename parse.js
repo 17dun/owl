@@ -27,7 +27,7 @@ rl.on('line', function(line) {
     var fields=line.split(" ");
     var dataStr = line.match(/w.gif\?\S+/)[0];
     var data = querystring.parse(dataStr.split('?')[1]);
-    connection.query('INSERT INTO `owl`.`session` (`guid`, `action`) VALUES ("'+data.guid+'","'+data.actions+'")', function(err, rows) {
+    connection.query('INSERT INTO `owl`.`session` (`guid`, `action`) VALUES ("'+data.guid+'","'+data.action+'")', function(err, rows) {
 	  console.log(err);
 	});
 });
