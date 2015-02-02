@@ -27,7 +27,26 @@ rl.on('line', function(line) {
     var fields=line.split(" ");
     var dataStr = line.match(/w.gif\?\S+/)[0];
     var data = querystring.parse(dataStr.split('?')[1]);
-    connection.query('INSERT INTO `owl`.`session` (`guid`, `action`) VALUES ("'+data.guid+'","'+data.action+'")', function(err, rows) {
-	  console.log(err);
-	});
+
+ 
+
+    //session数据
+    if(data.action){
+      connection.query('INSERT INTO `owl`.`actions` (`guid`, `actions`) VALUES ("'+data.guid+'","'+data.actions+'")', function(err, rows) {
+         console.log('ok')
+      });
+    }else{
+      connection.query('INSERT INTO `owl`.`sessions` (`guid`, `sid`,`logid`, `query`,`time`, `baiduid`,`format`, `pn`,`rn`, `net`,`availHeight`, `availWidth`,`platform`) VALUES ("'+data.guid+'","'+data.sid+'"'+data.logid+'","'+data.query+'","'+data.time+'","'+data.baiduid+'","'+data.format+'","'+data.pn+'","'+data.rn+'","'+data.net+'","'+data.availHeight+'","'+data.availWidth+'","'+data.platform+'")', function(err, rows) {
+         console.log('ok')
+      });
+    }
+
+
+
+
+
+    
+
+
+
 });
