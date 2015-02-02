@@ -28,8 +28,6 @@ rl.on('line', function(line) {
     var dataStr = line.match(/w.gif\?\S+/)[0];
     var data = querystring.parse(dataStr.split('?')[1]);
 
- 
-
     //session数据
     if(data.actions){
       connection.query('INSERT INTO `owl`.`actions` (`guid`, `actions`) VALUES ("'+data.guid+'","'+data.actions+'")', function(err, rows) {
