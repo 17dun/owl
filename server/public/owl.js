@@ -254,8 +254,8 @@ var OWL = {
 			return;
 		}
 
-		//发送数据
-		me.sendActionData();
+		//发送数据,并标识位是当前最后一条数据
+		me.sendActionData(true);
 		
 		//清零时间
 		me.startTime = 0;
@@ -384,9 +384,14 @@ var OWL = {
 	/**
 	 * 上报行为数据
 	 */
-	sendActionData : function(){
+	sendActionData : function(flag){
 		var me = this;
-		me.sendData('guid='+me.guid+'&dataType=actions&actions='+me.actionBuffer.join('!'))
+		if(flag){
+			me.sendData('guid='+me.guid+'&dataType=actions&isClose=1&actions='+me.actionBuffer.join('!'));
+		}else{
+			me.sendData('guid='+me.guid+'&dataType=actions&actions='+me.actionBuffer.join('!'))
+		}
+		
 		me.clearActionBuffer();
 	},
 
