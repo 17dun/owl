@@ -14,18 +14,17 @@ var connection = mysql.createConnection({
 });
 
 var rl = readline.createInterface({
-    input: fs.createReadStream('logs/owl-17.log'),
+    input: fs.createReadStream('logs/owl-18.log'),
     output: process.stdout,
     terminal: false
 });
 
 rl.on('line', function(line) {
     var result=new Array();
-    console.log(line);
-    if(line.indexOf('w.gif')==-1){
+    if(line.indexOf('dataType')==-1){
 	     console.log('hule')
     }else{
-      var dataStr = line.match(/w.gif\?\S+/)[0];
+      var dataStr = line.match(/\?sid=\S+/)[0];
         var data = querystring.parse(dataStr.split('?')[1]);
 
         console.log(data.guid) 
