@@ -84,7 +84,7 @@ function runLog(lastLine){
   
   //跑完后将新行号存入
   rl.on('close', function(line){
-    setLastLine(currentNum);
+    setLastLine(currentNum-1);
   })
 }
 
