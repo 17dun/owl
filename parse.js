@@ -21,21 +21,14 @@ var connection = mysql.createConnection({
 
 //查询上次读取的行号
 function  getLastLine(){
-  fs.readFile(lineSrc,function(err,data){
-    if(err){
-      console.log('读取行号错误' + err);  
-    }else{  
-      console.log('上次行号是' + data);
-
-    }
-  })
+  return ~~fs.readFileSync(lineSrc,{encoding:'utf8'});
 }
 
 //查询上次读取的行号
 function  setLastLine(num){
-  fs.appendFile(lineSrc,num,function(err){
+  fs.writeFile(lineSrc,num,function(err){
     if(err){
-      console.log('写取行号错误' + err);  
+      console.log('写入行号错误' + err);  
     }else{  
       console.log('写入行号成功' + num);
     }
@@ -48,7 +41,7 @@ fs.exists(lineSrc, function (exists) {
   if(exists){
     //之前执行过
     var lastLine = getLastLine();
-     runLog(lastLine+1);
+	runLog(lastLine+1);
   }else{
     //首次执行
     runLog(1);
@@ -71,7 +64,7 @@ function runLog(startNum){
   rl.on('line', function(line) {
       currentNum++;
       if(line.indexOf('dataType')==-1){
-         console.log('hule')
+         //console.log('hule')
       }else{
         var dataStr = line.match(/\?sid=\S+/)[0];
         var data = querystring.parse(dataStr.split('?')[1]);
