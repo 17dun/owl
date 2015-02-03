@@ -6,6 +6,7 @@ var OWLSTATIC = {
 	'query' : '完美世界857',
 	'Baiduid' : 'LJSDLASJDJ',
 	'format' : 'iphone',
+	'time' : '19289234823',
 	'pn' : '10',
 	'rn' : '23'
 };
@@ -31,7 +32,7 @@ var OWL = {
 		/**
 		 * 数据上报地址
 		 */
-		sendSrc:'http://cq01-mbu-web06.epc.baidu.com:8082/owl/w.gif'
+		sendSrc:'http://182.254.209.32:9999/w.gif'
 	},
 
 	guid : '',
@@ -385,7 +386,7 @@ var OWL = {
 	 */
 	sendActionData : function(){
 		var me = this;
-		me.sendData('guid='+me.guid+'&action='+me.actionBuffer.join('!'))
+		me.sendData('guid='+me.guid+'&dataType=actions&actions='+me.actionBuffer.join('!'))
 		me.clearActionBuffer();
 	},
 
@@ -396,7 +397,7 @@ var OWL = {
 	sendStartData : function(){
 		var me = this;
 		var dataArray = OWL.staticBuffer.concat(OWL.envBuffer);
-		var queryStr = 'guid='+me.guid+'&'+dataArray.join('&');
+		var queryStr = 'guid='+me.guid+'&dataType=static&'+dataArray.join('&');
 		me.sendData(queryStr);
 	},
 
