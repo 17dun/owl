@@ -162,9 +162,10 @@ var OWL = {
 	init : function(){
 		var me = this;
 		me.guid = me.getGuid();
+		me.startRecord();
 		me.collectEnv();
 		me.collectStatic();
-		me.startRecord();
+		
 	},
 
 
@@ -402,7 +403,7 @@ var OWL = {
 	sendStartData : function(){
 		var me = this;
 		var dataArray = OWL.staticBuffer.concat(OWL.envBuffer);
-		var queryStr = 'guid='+me.guid+'&dataType=static&'+dataArray.join('&');
+		var queryStr = 'guid='+me.guid+'&dataType=start&startTime='+ me.startTime+'&'+dataArray.join('&');
 		me.sendData(queryStr);
 	},
 
