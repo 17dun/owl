@@ -13,9 +13,7 @@ var server=http.createServer(function(request,response){
     var obj= url.parse(request.url);
     response.setHeader("Server","Node/V8");
     var pathname=obj.pathname;
-    if(pathname=='/w.gif'){
 	console.log(obj.search);
-    }
     var realPath = path.join("public", path.normalize(pathname.replace(/\.\./g, "")));
     var pathHandle=function(realPath){
     //用fs.stat方法获取文件

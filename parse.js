@@ -21,6 +21,7 @@ var rl = readline.createInterface({
 
 rl.on('line', function(line) {
     var result=new Array();
+    console.log(line);
     if(line.indexOf('w.gif')==-1){
 	     console.log('hule')
     }else{
