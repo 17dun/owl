@@ -1,6 +1,6 @@
 var http = require('http');
 var url = require('url');
-var db = require('./apidb');
+var db = require('./owldb');
 var querystring = require('querystring');
 var port = 9998;
 function main(req,res){
