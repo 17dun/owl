@@ -11,14 +11,17 @@
     <style>
         .device {
           display: block;
-          width: 256px;
-          height: 600px;
+          width: 400px;
+          height: 1000px;
           font-family: "Helvetica Neue", sans-serif;
           background-image: url("img/device-sprite.png");
           background-repeat: no-repeat;
           background-position: 0 0;
           background-size: 100%;
+          position: absolute;
+          z-index:999;
         }
+        .snap{position:absolute;top:120px;padding-left:40px;height: 580px;overflow: hidden;}
         .panel-body{text-align: center;}
         .device-tools{font-size:18px;}
         .device-tools span{margin-left:10px;cursor: pointer;}
@@ -50,49 +53,26 @@
             <a href="#" class="list-group-item">活跃时间：晚上</a>
           </div>
         </div>
-
-        <div class="col-sm-5">
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h3 class="panel-title">行为轨迹还原</h3>
-            </div>
-            <div class="panel-body">
+        <div class="col-sm-5" style="margin-left:50px">
               <div class="col-sm-7">
                 <div class="device"></div>
+                <div class="snap">
+                    <iframe src="snap/index.html" width="320" height="10000" scrolling="none" frameborder="0" name="main"></iframe> 
                 </div>
-              <div class="col-sm-5" style="margin-top:40px;">
+               </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">控制面板</h3>
+            </div>
+            <div class="panel-body">
               <div class="device-tools">
                 <span class="glyphicon glyphicon-chevron-left"></span>
-                <span class="glyphicon glyphicon-play"></span>
+                <span class="glyphicon glyphicon-play" id="play"></span>
                 <span class="glyphicon glyphicon-stop"></span>
                 <span class="glyphicon glyphicon-chevron-right"></span>
                 <span class="glyphicon glyphicon-volume-off"></span>
-              </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-         <div class="col-sm-5">
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h3 class="panel-title">分析图</h3>
-            </div>
-            <div class="panel-body">
-              <div class="col-sm-7">
-  
-              </div>
-              <div class="col-sm-5">
-              <div class="map-tools">
-                  <ul class="list-group">
-                    <li class="list-group-item"><a href="#">视觉关注</a></li>
-                    <li class="list-group-item"><a href="#">滑屏操作</a></li>
-                    <li class="list-group-item"><a href="#">点击操作</a></li>
-                  </ul>
-                  <ul class="list-group">
-                    <li class="list-group-item"><a href="#">导出为图片</a></li>
-                  </ul>
-              </div>
               </div>
             </div>
           </div>
@@ -100,5 +80,51 @@
         </div>
       </div>
     </div>
+    <script src="js/jquery-1.11.2.js"></script>
+	<script>
+	var play = {
+		guid : 'ead984f056cc4b35aa50a153902f4889',
+		init : function(){
+			var me = this;
+			me.bindEvent();
+			me.getAction();
+		},
+
+		bindEvent : function(){
+
+
+		},
+
+		//获取actions数据
+		getAction : function(){
+			var me = this;
+			$.getJSON('http://182.254.209.32:9998/?method=getActionByGuid&guid='+ me.guid,function(json){
+				console.log(json)
+			})
+
+		},
+
+		parseAction : function(){
+
+
+		}
+
+
+
+
+
+
+
+	}
+
+	play.init();
+
+
+
+
+	</script>
+
+
+
   </body>
 </html>
