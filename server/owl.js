@@ -13,7 +13,9 @@ var server=http.createServer(function(request,response){
     var obj= url.parse(request.url);
     response.setHeader("Server","Node/V8");
     var pathname=obj.pathname;
-	console.log(obj.search);
+    if(obj.search){
+    	console.log(obj.search);
+    }
     var realPath = path.join("public", path.normalize(pathname.replace(/\.\./g, "")));
     var pathHandle=function(realPath){
     //用fs.stat方法获取文件
@@ -36,5 +38,6 @@ var server=http.createServer(function(request,response){
     }
     pathHandle(realPath);
 });
-    server.listen(port);
-    console.log("owl"+port);
+server.listen(port);
+var startTime = new Date();
+console.log("owl log server start at"+startTime);
