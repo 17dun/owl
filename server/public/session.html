@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>OWL-专注移动端用户交互行为分析</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/dashboard.css" rel="stylesheet">
+    <style>
+        .device {
+          display: block;
+          width: 256px;
+          height: 600px;
+          font-family: "Helvetica Neue", sans-serif;
+          background-image: url("img/device-sprite.png");
+          background-repeat: no-repeat;
+          background-position: 0 0;
+          background-size: 100%;
+        }
+        .panel-body{text-align: center;}
+        .device-tools{font-size:18px;}
+        .device-tools span{margin-left:10px;cursor: pointer;}
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">OWL-移动端用户交互行为平台</a>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12 main">
+          <div class="col-sm-2">
+          <div class="list-group">
+            <a href="#" class="list-group-item active">
+              用户属性
+            </a>
+            <a href="#" class="list-group-item">访问时间：1m</a>
+            <a href="#" class="list-group-item">网络：wifi</a>
+            <a href="#" class="list-group-item">浏览器：safiri</a>
+            <a href="#" class="list-group-item">平台：iphone</a>
+            <a href="#" class="list-group-item">分辨率：320*568</a>
+            <a href="#" class="list-group-item">年龄区间：20-30</a>
+            <a href="#" class="list-group-item">性别：男</a>
+            <a href="#" class="list-group-item">活跃时间：晚上</a>
+          </div>
+        </div>
+
+        <div class="col-sm-5">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">行为轨迹还原</h3>
+            </div>
+            <div class="panel-body">
+              <div class="col-sm-7">
+                <div class="device"></div>
+                </div>
+              <div class="col-sm-5" style="margin-top:40px;">
+              <div class="device-tools">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="glyphicon glyphicon-play"></span>
+                <span class="glyphicon glyphicon-stop"></span>
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="glyphicon glyphicon-volume-off"></span>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+         <div class="col-sm-5">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">分析图</h3>
+            </div>
+            <div class="panel-body">
+              <div class="col-sm-7">
+  
+              </div>
+              <div class="col-sm-5">
+              <div class="map-tools">
+                  <ul class="list-group">
+                    <li class="list-group-item"><a href="#">视觉关注</a></li>
+                    <li class="list-group-item"><a href="#">滑屏操作</a></li>
+                    <li class="list-group-item"><a href="#">点击操作</a></li>
+                  </ul>
+                  <ul class="list-group">
+                    <li class="list-group-item"><a href="#">导出为图片</a></li>
+                  </ul>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
