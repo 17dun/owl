@@ -13,7 +13,7 @@ var connection = mysql.createConnection({
 });
 
 function getSessionList(req,res){
-	connection.query('SELECT * from sessions order by `id` desc limit', function(err, rows) {
+	connection.query('SELECT * from sessions order by `id` desc', function(err, rows) {
 	  res.end(JSON.stringify(rows));
 	});
 }
@@ -21,7 +21,8 @@ function getSessionList(req,res){
 function getActionByGuid(req,res){
 	var querys = querystring.parse(url.parse(req.url).query);
 	var guid = querys.guid;
-	connection.query('SELECT * from actions WHERE `guid`='+guid, function(err, rows) {
+	console.log('SELECT * from actions WHERE `guid`='+guid);       
+	connection.query('SELECT * from actions WHERE `guid`="'+guid+'"', function(err, rows) {
 	  res.end(JSON.stringify(rows));
 	});
 }
