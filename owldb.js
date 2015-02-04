@@ -21,7 +21,6 @@ function getSessionList(req,res){
 function getActionByGuid(req,res){
 	var querys = querystring.parse(url.parse(req.url).query);
 	var guid = querys.guid;
-	console.log('SELECT * from actions WHERE `guid`='+guid);       
 	connection.query('SELECT * from actions WHERE `guid`="'+guid+'"', function(err, rows) {
 	  res.end(JSON.stringify(rows));
 	});
