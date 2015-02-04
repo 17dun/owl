@@ -20,9 +20,14 @@ function getSessionList(req,res){
 
 function getActionByGuid(req,res){
 	var querys = querystring.parse(url.parse(req.url).query);
+	res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Headers", "X-Requested-With");
+    res.setHeader("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+    res.setHeader("X-Powered-By",' 3.2.1')
+    res.setHeader("Content-Type", "application/json;charset=utf-8");
 	var guid = querys.guid;
 	connection.query('SELECT * from actions WHERE `guid`="'+guid+'"', function(err, rows) {
-	  res.end(JSON.stringify(rows));
+		res.end(JSON.stringify(rows));
 	});
 }
 
