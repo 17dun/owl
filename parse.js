@@ -30,7 +30,7 @@ function  setLastLine(num){
     if(err){
       console.log('写入行号错误' + err);  
     }else{  
-      console.log('写入行号成功' + num);
+      console.log('处理到第' + num + '条日志');
     }
   })
 }
@@ -73,8 +73,8 @@ function runLog(lastLine){
 		               console.log('actions')
 		            });
 		        }else{
-		            connection.query('INSERT INTO `owl`.`sessions` (`guid`, `sid`,`logid`, `query`, `baiduid`,`format`, `pn`,`rn`, `net`,`availHeight`, `availWidth`,`platform`) VALUES ("'+data.guid+'","'+data.sid+'","'+data.logid+'","'+data.query+'","'+data.baiduid+'","'+data.format+'","'+data.pn+'","'+data.rn+'","'+data.net+'","'+data.availHeight+'","'+data.availWidth+'","'+data.platform+'")', function(err, rows) {
-		               console.log('session');
+		            connection.query('INSERT INTO `owl`.`sessions` (`guid`,`time`,`sid`,`logid`, `query`, `baiduid`,`format`, `pn`,`rn`, `net`,`availHeight`, `availWidth`,`platform`) VALUES ("'+data.guid+'","'+data.startTime+'","'+data.sid+'","'+data.logid+'","'+data.query+'","'+data.Baiduid+'","'+data.format+'","'+data.pn+'","'+data.rn+'","'+data.net+'","'+data.availHeight+'","'+data.availWidth+'","'+data.platform+'")', function(err, rows) {
+		               console.log(data.logid);
 		            });
 		        }
 	      }
