@@ -89,39 +89,28 @@
 			me.bindEvent();
 			me.getAction();
 		},
-
 		bindEvent : function(){
-
-
 		},
-
 		//获取actions数据
 		getAction : function(){
 			var me = this;
 			$.getJSON('http://182.254.209.32:9998/?method=getActionByGuid&guid='+ me.guid,function(json){
-				console.log(json)
-			})
-
+				var actions = [];
+				var actionsStr = '';
+				$.each(json,function(i,item){
+					actions.push(item.actions);
+					actionsStr = actions.join('!');
+				})
+				console.log(actionsStr);
+			});
 		},
-
 		parseAction : function(){
 
 
 		}
 
-
-
-
-
-
-
 	}
-
 	play.init();
-
-
-
-
 	</script>
 
 
