@@ -23,7 +23,15 @@ function getActionByGuid(req,res){
 	
 	var guid = querys.guid;
 	connection.query('SELECT s.time , a.* from `sessions` as s inner join `actions` as a on a.guid=s.guid WHERE a.guid="'+guid+'"', function(err, rows) {
+		var rsActionArr = [];
+		for(var i = 0;i<rows.length;i++){
+			rsActionArr.push(rows[i].actions);
+		}
+		var rsActions = rsActionArr.join('!');
+		rows[0].actions = rsActions;
+		rows.length = 1;
 		res.end(JSON.stringify(rows));
+
 	});
 }
 
