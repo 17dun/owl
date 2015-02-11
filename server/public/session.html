@@ -76,10 +76,10 @@
             </div>
             <div class="panel-body">
               <div class="device-tools">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-                <span class="glyphicon glyphicon-play" id="play"></span>
-                <span class="glyphicon glyphicon-stop"></span>
-                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="glyphicon glyphicon-chevron-left" id="pre"></span>
+                <span class="glyphicon glyphicon-play" id="play" ></span>
+                <span style="display:none" class="glyphicon glyphicon-stop" id="stop"></span>
+                <span class="glyphicon glyphicon-chevron-right" id="next"></span>
                 <span class="glyphicon glyphicon-volume-off"></span>
               </div>
             </div>
@@ -100,6 +100,7 @@
     	pointer : null,
     	hit:null,
     	currentAction:0,
+    	status:'stop',
     	deviation : {
     		x:20,
     		y:20
@@ -108,11 +109,12 @@
 			var me = this;
 			me.guid = location.hash.substr(1)
 			me.bindEvent();
-      		me.stageInit();
+      		//me.stageInit();
 		},
 
 		stageInit : function(){
 			var me = this;
+			me.status = 'play';
 			me.stage = new createjs.Stage("myCanvas");
 			var img = new Image();
 			img.onload = function(e){
@@ -132,6 +134,35 @@
 		},
 
 		bindEvent : function(){
+			var me = this;
+			$('#play').on('click',function(){
+				if(me.status=='pause'){
+					me.status = 'play';
+					me.nextAction();
+				}else if(me.status=='stop'){
+					me.stageInit();
+				}else{
+					return false;
+				}
+				$('#play').hide();
+				$('#stop').show();
+				
+			});
+			$('#stop').on('click',function(){
+				me.status = 'pause';
+				$('#play').show();
+				$('#stop').hide();
+			});
+			$('#next').on('click',function(){
+				me.goToNext();
+
+			});
+			$('#pre').on('click',function(){
+				me.goToPre();
+
+			})
+
+
 		},
 		//获取actions数据
 		getAction : function(){
@@ -164,30 +195,53 @@
 	    parseFirstAction : function(action){
 	      var me  = this;
 	      me.currentAction = 0;
-	      var action = me.actionList[0]
+	      var action = me.actionList[0];
 	        if(action[0]=='c'){
 	          me.touchStart({x:me.parseNumber(action[4]),y:me.parseNumber(action[5])});
 	        }
 	    },
 
-	    nextAction : function(){
-	    	var me = play;
+	    //进入下一个动作
+	    goToNext : function(){
+	    	var me = this;
 	    	me.currentAction++;
 	    	var action = me.actionList[me.currentAction];
 	    	me.playActionUnit(action);
 	    },
 
+	    //进入前一个动作
+	    goToPre : function(){
+	    	var me = this;
+	    	me.currentAction--;
+	    	var action = me.actionList[me.currentAction];
+	    	me.playActionUnit(action);
+
+	    },
 
 
-	    //行为列表存到一个数组，用递归的方式，从第一个开始，每次都递归调用，用时间来解析。
+	    nextAction : function(){
+	    	var me = play;
+	    	if(me.status!=='play'){
+	    		return;
+	    	}
+	    	me.currentAction++;
+	    	var action = me.actionList[me.currentAction];
+	    	if(!action){
+	    		me.status = 'stop';
+	    		$('#play').show();
+				$('#stop').hide();
+	    		return;
+	    	}
+	    	me.playActionUnit(action);
+	    },
+
 
 	    //还原单个行为
 	    playActionUnit : function(action){
 	    	var me  = this;
+	    	console.log(action)
 	    	actionType = action[0];
 	    	var snap = $('.snap-box')[0];
-	    	//console.log(-me.parseNumber(action[2]))
-			//snap.style.top  =  120-me.parseNumber(action[2])+'px';
 	    	switch(actionType){
 	    		case 'c':
 	    			me.touchStart({
@@ -208,7 +262,8 @@
 	    		break;
 	    	}
 	    	me.scrollTo({
-			    pageY: me.parseNumber(action[2])
+			    pageY:me.parseNumber(action[2]),
+			    time:me.parseNumber(action[1])
 			});
 
 	    },
@@ -217,12 +272,14 @@
 	    scrollTo : function(options){
 			var snap = $('.snap-box')[0];
 	        var pageY = options.pageY;
+	        var time = options.time/1000||0.1;
+
 	        if (snap.ttfaInTransition === "true") return;
 
 	        var currValue = getComputedStyle(snap)['top'];
 
 	        snap.ttfaInTransition = true;
-	        snap.style['-webkit-transition'] = "top 0.2s ease-in-out";
+	        snap.style['-webkit-transition'] = 'top '+ time +'s ease-in-out';
 	        snap.style.top = 120-pageY+'px';
 	        snap.addEventListener("webkitTransitionEnd", function transitionEnd1(event) {
 
