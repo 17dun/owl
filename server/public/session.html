@@ -21,7 +21,8 @@
           position: absolute;
           z-index:999;
         }
-        .snap{position:absolute;top:120px;padding-left:40px;height: 580px;overflow: hidden;}
+        .snap{margin-top:120px;padding-left:40px;height: 580px;overflow: hidden;}
+        .snap-box{position:absolute;}
         .panel-body{text-align: center;}
         .device-tools{font-size:18px;}
         .device-tools span{margin-left:10px;cursor: pointer;}
@@ -92,7 +93,7 @@
     <script src="js/tweenjs-0.6.0.combined.js"></script>
 	<script>
 	var play = {
-		guid : 'fb66abb3b5d44699ba8b677e2355b9dc',
+		guid : '',
 		actionList : [],
 		stage : null,
     	drawingCanvas : null,
@@ -105,6 +106,7 @@
     	},
 		init : function(){
 			var me = this;
+			me.guid = location.hash.substr(1)
 			me.bindEvent();
       		me.stageInit();
 		},
@@ -173,7 +175,6 @@
 	    	me.currentAction++;
 	    	var action = me.actionList[me.currentAction];
 	    	me.playActionUnit(action);
-	    	console.log(action);
 	    },
 
 
@@ -184,6 +185,9 @@
 	    playActionUnit : function(action){
 	    	var me  = this;
 	    	actionType = action[0];
+	    	var snap = $('.snap-box')[0];
+	    	//console.log(-me.parseNumber(action[2]))
+			//snap.style.top  =  120-me.parseNumber(action[2])+'px';
 	    	switch(actionType){
 	    		case 'c':
 	    			me.touchStart({
@@ -195,6 +199,7 @@
 	    			me.touchEnd();
 	    			break;
 	    		case 'm':
+	    		//对于每个动作之前都需要有一个停留，停留的时间
 	    			me.moveTo({
 	    				x:me.parseNumber(action[4]),
 	    				y:me.parseNumber(action[5]),
@@ -212,17 +217,16 @@
 	    scrollTo : function(options){
 			var snap = $('.snap-box')[0];
 	        var pageY = options.pageY;
-	        if (snap.dataset.ttfaInTransition === "true") return;
+	        if (snap.ttfaInTransition === "true") return;
 
 	        var currValue = getComputedStyle(snap)['top'];
 
-	        snap.dataset.ttfaInTransition = true;
-	        snap.style['top'] = currValue;
-	        snap.offsetWidth;
-	        snap.style['-webkit-transition'] = "top 0.3s ease-in-out";
-	        snap.style.top = -pageY;
+	        snap.ttfaInTransition = true;
+	        snap.style['-webkit-transition'] = "top 0.2s ease-in-out";
+	        snap.style.top = 120-pageY+'px';
 	        snap.addEventListener("webkitTransitionEnd", function transitionEnd1(event) {
-	            delete snap.dataset.ttfaInTransition;
+
+	            delete snap.ttfaInTransition;
 	    		snap.style['-webkit-transition'] = "";
 	    		snap.removeEventListener("webkitTransitionEnd", transitionEnd1);
 	        });
@@ -262,7 +266,6 @@
 	    	var me = this;
 	    	var currentX = options.x;
 	    	var currentY = options.y;
-	    	console.log(currentX)
 	    	createjs.Tween.get(me.pointer, {loop: false})
 	    		.to({x:currentX,y:currentY},100)
 	        	.to({scaleX:0.8, scaleY:0.8}, 100)
