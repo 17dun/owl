@@ -57,7 +57,14 @@
               <div class="col-sm-7">
                 <div class="device"></div>
                 <div class="snap">
+                	<div class="snap-box">
                     <iframe src="snap/index.html" width="320" height="10000" scrolling="none" frameborder="0" name="main"></iframe> 
+                    </div>
+                </div>
+
+                <div class="" style="width:330px;height:578px;top:118px;left:50px;z-index:99999;position:absolute;">
+                	<canvas id="myCanvas" width="330" height="578"></canvas>
+
                 </div>
                </div>
         </div>
@@ -81,36 +88,214 @@
       </div>
     </div>
     <script src="js/jquery-1.11.2.js"></script>
+    <script src="js/easeljs-0.8.0.combined.js"></script>
+    <script src="js/tweenjs-0.6.0.combined.js"></script>
 	<script>
 	var play = {
-		guid : 'ead984f056cc4b35aa50a153902f4889',
+		guid : 'fb66abb3b5d44699ba8b677e2355b9dc',
+		actionList : [],
+		stage : null,
+    	drawingCanvas : null,
+    	pointer : null,
+    	hit:null,
+    	currentAction:0,
+    	deviation : {
+    		x:20,
+    		y:20
+    	},
 		init : function(){
 			var me = this;
 			me.bindEvent();
-			me.getAction();
+      		me.stageInit();
 		},
+
+		stageInit : function(){
+			var me = this;
+			me.stage = new createjs.Stage("myCanvas");
+			var img = new Image();
+			img.onload = function(e){
+			 	me.pointer = new createjs.Bitmap("img/point.png");
+			 	me.pointer.set({x:50, y:200});
+			 	me.hit = new createjs.Shape();
+			 	me.hit.graphics.setStrokeStyle(10).beginStroke("#46ca3b").beginFill("#ff0000").drawCircle(0,0,30);
+				me.hit.alpha = 0;
+				me.hit.set({x:70,y:220})
+				me.stage.addChild(me.hit,me.pointer);
+				me.stage.update();
+				me.getAction();
+			};
+   			img.src = "img/point.png";
+   			createjs.Ticker.setFPS(100);
+			createjs.Ticker.addEventListener("tick", me.stage);
+		},
+
 		bindEvent : function(){
 		},
 		//获取actions数据
 		getAction : function(){
 			var me = this;
 			$.getJSON('http://182.254.209.32:9998/?method=getActionByGuid&guid='+ me.guid,function(json){
-				var actions = [];
-				var actionsStr = '';
-				$.each(json,function(i,item){
-					actions.push(item.actions);
-					actionsStr = actions.join('!');
-				})
-				console.log(actionsStr);
+				me.parseActions(json[0].actions);
 			});
 		},
-		parseAction : function(){
+
+		//将字符串解析为数组
+		parseActions : function(actionsStr){
+			var me  = this;
+			var actionsArr =  actionsStr.split('!');
+			var newActionArr = [];
+			$.each(actionsArr,function(i,item){
+				var actionArr = item.split('*');
+				newActionArr.push(actionArr);
+			});
+			me.actionList = newActionArr;
+			//me.firstAction();
+			 me.parseFirstAction();
+
+		},
+
+		parseNumber : function(str){
+			return parseInt(str,36);
+		},
+
+	    //解析单个行为数据
+	    parseFirstAction : function(action){
+	      var me  = this;
+	      me.currentAction = 0;
+	      var action = me.actionList[0]
+	        if(action[0]=='c'){
+	          me.touchStart({x:me.parseNumber(action[4]),y:me.parseNumber(action[5])});
+	        }
+	    },
+
+	    nextAction : function(){
+	    	var me = play;
+	    	me.currentAction++;
+	    	var action = me.actionList[me.currentAction];
+	    	me.playActionUnit(action);
+	    	console.log(action);
+	    },
+
+
+
+	    //行为列表存到一个数组，用递归的方式，从第一个开始，每次都递归调用，用时间来解析。
+
+	    //还原单个行为
+	    playActionUnit : function(action){
+	    	var me  = this;
+	    	actionType = action[0];
+	    	switch(actionType){
+	    		case 'c':
+	    			me.touchStart({
+	    				x:me.parseNumber(action[4]),
+	    				y:me.parseNumber(action[5])
+	    			})
+	    			break;
+	    		case 'u':
+	    			me.touchEnd();
+	    			break;
+	    		case 'm':
+	    			me.moveTo({
+	    				x:me.parseNumber(action[4]),
+	    				y:me.parseNumber(action[5]),
+	    				time:me.parseNumber(action[1]),
+	    			})
+	    		break;
+	    	}
+	    	me.scrollTo({
+			    pageY: me.parseNumber(action[2])
+			});
+
+	    },
+
+
+	    scrollTo : function(options){
+			var snap = $('.snap-box')[0];
+	        var pageY = options.pageY;
+	        if (snap.dataset.ttfaInTransition === "true") return;
+
+	        var currValue = getComputedStyle(snap)['top'];
+
+	        snap.dataset.ttfaInTransition = true;
+	        snap.style['top'] = currValue;
+	        snap.offsetWidth;
+	        snap.style['-webkit-transition'] = "top 0.3s ease-in-out";
+	        snap.style.top = -pageY;
+	        snap.addEventListener("webkitTransitionEnd", function transitionEnd1(event) {
+	            delete snap.dataset.ttfaInTransition;
+	    		snap.style['-webkit-transition'] = "";
+	    		snap.removeEventListener("webkitTransitionEnd", transitionEnd1);
+	        });
+		},
+
+
+	    //增加指示圈
+	    //手指移动到某一个坐标点
+	    moveTo : function(options){
+	    	var me = this;
+	    	var cx = options.x;
+	    	var cy = options.y;
+	    	var time = options.time;
+
+	    	createjs.Tween.get(me.hit, {loop: false})
+	        .to({x:cx+me.deviation.x, y:cy+me.deviation.y}, time)
+
+	    	createjs.Tween.get(me.pointer, {loop: false})
+	        .to({x:cx, y:cy}, time)
+	        .call(me.nextAction)
+	    },
+
+	    //清扫
+	    sweep : function(direction){
+	    	var me = this;
+	    	var currentX = me.pointer.x;
+	    	var currentY = me.pointer.y;
+	    	createjs.Tween.get(me.pointer, {loop: false})
+	        .to({x:currentX, y:currentY-200}, 200)
+	        .to({x:currentX, y:currentY}, 200)
+	        .call(function(){me.stage.update()});
+	    },
+
+
+	    //按下
+	    touchStart : function(options){
+	    	var me = this;
+	    	var currentX = options.x;
+	    	var currentY = options.y;
+	    	console.log(currentX)
+	    	createjs.Tween.get(me.pointer, {loop: false})
+	    		.to({x:currentX,y:currentY},100)
+	        	.to({scaleX:0.8, scaleY:0.8}, 100)
+	        createjs.Tween.get(me.hit,{loop:false})
+	        	.to({x:currentX,y:currentY},100)
+	    		.to({alpha:0.8},100)
+	    		.call(me.nextAction)
+	    },
+
+
+
+	    //按起
+	    touchEnd : function(options){
+	    	var me = this;
+	    	var currentX = me.pointer.x;
+	    	var currentY = me.pointer.y;
+	    	createjs.Tween.get(me.pointer, {loop: false})
+	        	.to({scaleX:1, scaleY:1}, 100)
+	        createjs.Tween.get(me.hit,{loop:false})
+	    		.to({alpha:0},100)
+	    		.call(me.nextAction)
+	    },
+
+
+
+	    //最好按找原来的来。看看有什么问题没
+
+
+
 
 
 		}
-
-	}
-	play.init();
+		play.init();
 	</script>
 
 

@@ -42,29 +42,8 @@
                   <th>操作</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td><a href="">F1D83E8B...</a></td>
-                  <td>2015/2/4</td>
-                  <td>我们的中国</td>
-                  <td>13s</td>
-                  <td>wifi</td>
-                  <td>safari</td>
-                  <td>iphone</td>
-                  <td>300*400</td>
-                  <td><a href="session.html">分析</a></td>
-                </tr>
-                <tr>
-                  <td><a href="">F1D83E8B...</a></td>
-                  <td>2015/2/4</td>
-                  <td>我们的中国</td>
-                  <td>13s</td>
-                  <td>wifi</td>
-                  <td>safari</td>
-                  <td>iphone</td>
-                  <td>300*400</td>
-                  <td><a href="session.html">分析</a></td>
-                </tr>
+              <tbody id="sesionListDataBox">
+               	
               </tbody>
             </table>
           </div>
@@ -72,4 +51,50 @@
       </div>
     </div>
   </body>
+
+
+  	<script id="sessionListTpl" type="text/html">
+  		{{each list}}
+        	<tr>
+              <td><a href="">{{$value.baiduid}}</a></td>
+              <td>{{$value.time}}</td>
+              <td>{{$value.query}}</td>
+              <td>{{$value.time}}</td>
+              <td>{{$value.net}}</td>
+              <td>{{$value.net}}</td>
+              <td>{{$value.platform}}</td>
+              <td>{{$value.availWidth}}*{{$value.availHeight}}</td>
+              <td><a href="session.html">回放</a> <a href="session.html">分析</a></td>
+            </tr>
+         {{/each}}
+	</script>
+
+   <script src="js/jquery-1.11.2.js"></script>
+   <script src="js/template.js"></script>
+   <script>
+	var index = {
+		init : function(){
+			var me = this;
+			me.bindEvent();
+			me.getSessionList();
+		},
+		bindEvent : function(){
+		},
+		//获取actions数据
+		getSessionList : function(){
+			var me = this;
+			$.getJSON('http://182.254.209.32:9998/?method=getSessionList',function(json){
+				var data = {
+					list : json
+				}
+
+				var sessionListHtml = template('sessionListTpl', data);
+
+				$('#sesionListDataBox').html(sessionListHtml);
+			});
+		}
+
+	}
+	index.init();
+	</script>
 </html>
