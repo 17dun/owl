@@ -11,7 +11,7 @@
     <style>
         .device {
           display: block;
-          width: 400px;
+          width: 463px;
           height: 1000px;
           font-family: "Helvetica Neue", sans-serif;
           background-image: url("img/device-sprite.png");
@@ -21,8 +21,9 @@
           position: absolute;
           z-index:999;
         }
-        .snap{margin-top:120px;padding-left:40px;height: 580px;overflow: hidden;}
+        .snap{margin-top:138px;padding-left:44px;height: 580px;overflow: hidden;}
         .snap-box{position:absolute;}
+        .snap-scroll{width:375px;height: 667px;overflow: hidden;z-index: 99;position: absolute;}
         .panel-body{text-align: center;}
         .device-tools{font-size:18px;}
         .device-tools span{margin-left:10px;cursor: pointer;}
@@ -58,14 +59,14 @@
               <div class="col-sm-7">
                 <div class="device"></div>
                 <div class="snap">
+                	<div class="snap-scroll">
                 	<div class="snap-box">
-                    <iframe src="snap/index.html" width="320" height="10000" scrolling="none" frameborder="0" name="main"></iframe> 
+                    <iframe src="snap/index.html" width="375" height="10000" scrolling="none" frameborder="0" name="main"></iframe> 
+                    </div>
                     </div>
                 </div>
-
-                <div class="" style="width:330px;height:578px;top:118px;left:50px;z-index:99999;position:absolute;">
-                	<canvas id="myCanvas" width="330" height="578"></canvas>
-
+                <div class="" style="width:375px;top: 138px;left: 59px;height:667px;z-index:99999;position:absolute;">
+                	<canvas id="myCanvas" width="375" height="667"></canvas>
                 </div>
                </div>
         </div>
@@ -280,7 +281,7 @@
 
 	        snap.ttfaInTransition = true;
 	        snap.style['-webkit-transition'] = 'top '+ time +'s ease-in-out';
-	        snap.style.top = 120-pageY+'px';
+	        snap.style.top = -pageY+'px';
 	        snap.addEventListener("webkitTransitionEnd", function transitionEnd1(event) {
 
 	            delete snap.ttfaInTransition;
@@ -345,10 +346,6 @@
 	    		.to({alpha:0},100)
 	    		.call(me.nextAction)
 	    },
-
-
-
-	    //最好按找原来的来。看看有什么问题没
 
 
 

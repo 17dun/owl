@@ -35,7 +35,6 @@
                   <th>最后执行时间</th>
                   <th>日志入库率</th>
                   <th>session数据量</th>
-                  <th>action数据量</th>
                   <th>操作</th>
                 </tr>
               </thead>
@@ -55,7 +54,6 @@
               <td>{{$data.lastTime}}</td>
               <td>{{$data.lastSize}}/{{$data.logsize}}</td>
               <td>{{$data.sessionLength}}</td>
-              <td>{{$data.actionLength}}</td>
               <td><a class="runBtn btn btn-default btn-sm" onclick="task.runTask()" href="javascript:;">手动入库</a><span style="display:none" class="runHit">执行中...</span></td>
             </tr>
 	</script>
