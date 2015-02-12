@@ -21,29 +21,26 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">单用户行为分析</a></li>
+            <li><a href="#">单用户行为分析</a></li>
             <li><a href="#">多用户行为分析</a></li>
-            <li><a href="task.html">数据任务状态</a></li>
+            <li class="active"><a href="task.html">数据任务状态</a></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h2 class="sub-header">Session List</h2>
+          <h2 class="sub-header">数据状态</h2>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>Baiduid</th>
-                  <th>访问时间</th>
-                  <th>query</th>
-                  <th>行为时长</th>
-                  <th>网络</th>
-                  <th>浏览器</th>
-                  <th>平台</th>
-                  <th>分辨率</th>
+                  <th>最后执行时间</th>
+                  <th>日志条数</th>
+                  <th>已入库条数</th>
+                  <th>session数据量</th>
+                  <th>action数据量</th>
                   <th>操作</th>
                 </tr>
               </thead>
-              <tbody id="sesionListDataBox">
+              <tbody id="dataBox">
                	
               </tbody>
             </table>
@@ -54,18 +51,15 @@
   </body>
 
 
-  	<script id="sessionListTpl" type="text/html">
+  	<script id="dataTpl" type="text/html">
   		{{each list}}
         	<tr>
-              <td><a href="">{{$value.baiduid}}</a></td>
-              <td>{{$value.time}}</td>
-              <td>{{$value.query}}</td>
-              <td>{{$value.time}}</td>
-              <td>{{$value.net}}</td>
-              <td>{{$value.net}}</td>
-              <td>{{$value.platform}}</td>
-              <td>{{$value.availWidth}}*{{$value.availHeight}}</td>
-              <td><a href="session.html#{{$value.guid}}">回放</a> <a href="session.html#{{$value.guid}}">分析</a></td>
+              <td><a href="">{{$value.lastTime}}</a></td>
+              <td>{{$value.logLength}}</td>
+              <td>{{$value.logStor}}</td>
+              <td>{{$value.sessionLength}}</td>
+              <td>{{$value.actionLength}}</td>
+              <td><a href="session.html#{{$value.guid}}">手动入库</a></td>
             </tr>
          {{/each}}
 	</script>
@@ -84,14 +78,12 @@
 		//获取actions数据
 		getSessionList : function(){
 			var me = this;
-			$.getJSON('http://182.254.209.32:9998/?method=getSessionList',function(json){
+			$.getJSON('http://182.254.209.32:9998/?method=getTaskData',function(json){
 				var data = {
 					list : json
 				}
-
-				var sessionListHtml = template('sessionListTpl', data);
-
-				$('#sesionListDataBox').html(sessionListHtml);
+				var dataListHtml = template('dataTpl', data);
+				$('#dataBox').html(dataListHtml);
 			});
 		}
 

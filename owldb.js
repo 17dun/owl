@@ -5,6 +5,9 @@ var mysql = require('mysql');
 var http = require('http');
 var url = require('url');
 var querystring = require('querystring');
+var fs = require('fs');
+var logFile = 'logs/owl-18.log';
+var logFlagFile = 'line.data';
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
@@ -34,6 +37,32 @@ function getActionByGuid(req,res){
 
 	});
 }
+
+
+
+function getTableData(req,res){
+	connection.query('SELECT count(a.id) as actionLength,count(s.id) as sessionLength FROM `actions`a ,`sessions` s where 1=1', function(err, rows) {
+	  console.log(rows)
+
+	  res.end(JSON.stringify(rows));
+	});
+}
+
+function getLogStatus(){
+	var status = fs.statSync(logFlagFile);
+	//上次入库时间
+	var lastTime = status.mtime;
+	//上次处理到日志的行数
+	var logStor = ~~fs.readFileSync(logFlagFile,{encoding:'utf8'});
+	//日志总大小
+	var logLength = fs.statSync(logFile);
+	return {
+		lastTime : lastTime,
+		logStor : logStor,
+		logLength : logLength
+	}
+}
+
 
 module.exports = {
 	getSessionList : getSessionList,
