@@ -56,7 +56,7 @@ function getLogStatus(){
 	//上次处理到日志的行数
 	var logStor = ~~fs.readFileSync(logFlagFile,{encoding:'utf8'});
 	//日志总大小
-	var logLength = fs.statSync(logFile);
+	var logLength = fs.statSync(logFile).size;
 	return {
 		lastTime : lastTime,
 		logStor : logStor,
