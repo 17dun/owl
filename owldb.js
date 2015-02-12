@@ -42,9 +42,10 @@ function getActionByGuid(req,res){
 
 function getTableData(req,res){
 	connection.query('SELECT count(a.id) as actionLength,count(s.id) as sessionLength FROM `actions`a ,`sessions` s where 1=1', function(err, rows) {
-	  console.log(rows)
-
-	  res.end(JSON.stringify(rows));
+	  var obj = getLogStatus();
+	  obj.actionLength = rows[0].actionLength;
+	  obj.sessionLength = row[0].sessionLength;
+	  res.end(JSON.stringify(obj));
 	});
 }
 
