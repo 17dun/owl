@@ -82,7 +82,7 @@ function runLog(lastLine){
 		               console.log('actions')
 		            });
 		        }else{
-		            connection.query('INSERT INTO `owl`.`sessions` (`guid`,`time`,`sid`,`logid`, `query`, `baiduid`,`format`, `pn`,`rn`, `net`,`availHeight`, `availWidth`,`platform`) VALUES ("'+data.guid+'","'+data.startTime+'","'+data.sid+'","'+data.logid+'","'+data.query+'","'+data.Baiduid+'","'+data.format+'","'+data.pn+'","'+data.rn+'","'+data.net+'","'+data.availHeight+'","'+data.availWidth+'","'+data.os+'","'+data.broswer+'")', function(err, rows) {
+		            connection.query('INSERT INTO `owl`.`sessions` (`guid`,`time`,`sid`,`logid`, `query`, `baiduid`,`format`, `pn`,`rn`, `net`,`availHeight`, `availWidth`,`os`,`broswer`) VALUES ("'+data.guid+'","'+data.startTime+'","'+data.sid+'","'+data.logid+'","'+data.query+'","'+data.Baiduid+'","'+data.format+'","'+data.pn+'","'+data.rn+'","'+data.net+'","'+data.availHeight+'","'+data.availWidth+'","'+data.os+'","'+data.broswer+'")', function(err, rows) {
 		               console.log(data.logid);
 		            });
 		        }
