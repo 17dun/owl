@@ -14,7 +14,7 @@ function main(req,res){
     res.setHeader("Content-Type", "application/json;charset=utf-8");
     db[method](req,res);
   }else{
-    res.write('方法不存在');
+    res.write('method not find!');
     res.end();
   }
 }
