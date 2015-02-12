@@ -66,5 +66,6 @@ function getLogStatus(){
 
 module.exports = {
 	getSessionList : getSessionList,
-	getActionByGuid : getActionByGuid
+	getActionByGuid : getActionByGuid,
+	getTableData : getTableData
 };
