@@ -83,17 +83,19 @@ var OWL = {
 		'Baiduid',
 		'format',
 		'pn',
-		'rn'
+		'rn',
+		'broswer',
+		'ip',
+		'net',
+		'os'
 	],
 
 	/**
 	 * 需要收集的环境数据列
 	 */
 	envDataList : [
-		'net',
 		'availHeight',
-		'availWidth',
-		'platform'
+		'availWidth'
 	],
 
 
@@ -175,9 +177,6 @@ var OWL = {
 		me.each(me.envDataList,function(i,key){
 			var value;
 			switch(key){
-				case 'net':
-					value = '';
-					break;
 				case 'ua':
 				    value = navigator.userAgent;
 					break;
@@ -186,9 +185,6 @@ var OWL = {
 					break;
 				case 'availWidth':
 				    value = window.screen.availWidth;
-					break;
-				case 'platform':
-				    value = navigator.platform;
 					break;
 				default:
 					value = '';
