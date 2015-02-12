@@ -53,12 +53,12 @@
 
   	<script id="dataTpl" type="text/html">
         	<tr>
-              <td><a href="">{{$data.lastTime}}</a></td>
+              <td>{{$data.lastTime}}</td>
               <td>{{$data.logLength}}</td>
               <td>{{$data.logStor}}</td>
               <td>{{$data.sessionLength}}</td>
               <td>{{$data.actionLength}}</td>
-              <td><a class="runBtn" onclick="task.runTask()" href="javascript:;">手动入库</a><span style="display:none" class="runHit">执行中...</span></td>
+              <td><a class="runBtn btn btn-default btn-sm" onclick="task.runTask()" href="javascript:;">手动入库</a><span style="display:none" class="runHit">执行中...</span></td>
             </tr>
 	</script>
 
