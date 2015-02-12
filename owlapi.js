@@ -7,12 +7,12 @@ var port = 9998;
 function main(req,res){
   var arg  = url.parse(req.url).query;
   var method = querystring.parse(arg).method;
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Headers", "X-Requested-With");
+  res.setHeader("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+  res.setHeader("X-Powered-By",' 3.2.1')
+  res.setHeader("Content-Type", "application/json;charset=utf-8");
   if(db[method]){
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Headers", "X-Requested-With");
-    res.setHeader("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
-    res.setHeader("X-Powered-By",' 3.2.1')
-    res.setHeader("Content-Type", "application/json;charset=utf-8");
     db[method](req,res);
   }else if(method=='runTask'){
     parseTask.run();
