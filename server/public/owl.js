@@ -1,16 +1,5 @@
 //todo: 2，发送时带上环境数据和业务数据   3，一个公共的sendData方法。
 
-
-var OWLSTATIC = {
-	'logid' : '121937',
-	'query' : '完美世界857',
-	'Baiduid' : 'LJSDLASJDJ',
-	'format' : 'iphone',
-	'time' : '19289234823',
-	'pn' : '10',
-	'rn' : '23'
-};
-
 /**
  * 移动端的页面都是流式布局的
  * c*1rjr*0*.results~2div~a*57*8e*@
