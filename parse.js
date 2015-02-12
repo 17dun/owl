@@ -46,18 +46,20 @@ function  setLastSize(num){
 }
 
 
+function run(){
+  fs.exists(logLineFile, function (exists) {
+    if(exists){
+      //之前执行过
+      var lastLine = getLastLine();
+       runLog(lastLine);
+    }else{
+      //首次执行
+      runLog(0);
+    }
+  });
+}
 
 
-fs.exists(logLineFile, function (exists) {
-  if(exists){
-    //之前执行过
-    var lastLine = getLastLine();
-	   runLog(lastLine);
-  }else{
-    //首次执行
-    runLog(0);
-  }
-});
 
 //跑日志，参数为起始行
 function runLog(lastLine){
@@ -99,6 +101,4 @@ function runLog(lastLine){
   })
 }
 
-
-
-
+module.exports.run = run;
