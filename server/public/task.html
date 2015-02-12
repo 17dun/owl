@@ -13,7 +13,7 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">OWL-移动端用户交互行为平台</a>
+          <a class="navbar-brand" href="index.html">OWL-移动端用户交互行为平台</a>
         </div>
       </div>
     </nav>
@@ -21,7 +21,7 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li><a href="#">单用户行为分析</a></li>
+            <li><a href="index.html">单用户行为分析</a></li>
             <li><a href="#">多用户行为分析</a></li>
             <li class="active"><a href="task.html">数据任务状态</a></li>
           </ul>
@@ -52,42 +52,50 @@
 
 
   	<script id="dataTpl" type="text/html">
-  		{{each list}}
         	<tr>
-              <td><a href="">{{$value.lastTime}}</a></td>
-              <td>{{$value.logLength}}</td>
-              <td>{{$value.logStor}}</td>
-              <td>{{$value.sessionLength}}</td>
-              <td>{{$value.actionLength}}</td>
-              <td><a href="session.html#{{$value.guid}}">手动入库</a></td>
+              <td><a href="">{{$data.lastTime}}</a></td>
+              <td>{{$data.logLength}}</td>
+              <td>{{$data.logStor}}</td>
+              <td>{{$data.sessionLength}}</td>
+              <td>{{$data.actionLength}}</td>
+              <td><a class="runBtn" onclick="task.runTask()" href="javascript:;">手动入库</a><span style="display:none" class="runHit">执行中...</span></td>
             </tr>
-         {{/each}}
 	</script>
 
    <script src="js/jquery-1.11.2.js"></script>
    <script src="js/template.js"></script>
    <script>
-	var index = {
+	var task = {
 		init : function(){
 			var me = this;
 			me.bindEvent();
 			me.getSessionList();
 		},
 		bindEvent : function(){
+
 		},
 		//获取actions数据
 		getSessionList : function(){
 			var me = this;
-			$.getJSON('http://182.254.209.32:9998/?method=getTaskData',function(json){
-				var data = {
-					list : json
-				}
-				var dataListHtml = template('dataTpl', data);
+			$.getJSON('http://182.254.209.32:9998/?method=getTableData',function(json){
+				var dataListHtml = template('dataTpl', json);
 				$('#dataBox').html(dataListHtml);
+			});
+		},
+
+		//执行日志处理任务
+		runTask	: function(){
+			var me = this;
+			$('.runBtn').hide();
+			$('.runHit').show();
+			$.getJSON('http://182.254.209.32:9998/?method=runTask',function(json){
+				
 			});
 		}
 
 	}
-	index.init();
+	task.init();
+
+
 	</script>
 </html>
