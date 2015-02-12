@@ -7,7 +7,8 @@ var url = require('url');
 var querystring = require('querystring');
 var fs = require('fs');
 var logFile = 'logs/owl-18.log';
-var logFlagFile = 'line.data';
+var logSizeFile = 'size.data';
+var logLineFile = 'line.data';
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
@@ -50,17 +51,17 @@ function getTableData(req,res){
 }
 
 function getLogStatus(){
-	var status = fs.statSync(logFlagFile);
+	var status = fs.statSync(logLineFile);
 	//上次入库时间
 	var lastTime = status.mtime;
 	//上次处理到日志的行数
-	var logStor = ~~fs.readFileSync(logFlagFile,{encoding:'utf8'});
+	var lastSize = ~~fs.readFileSync(logSizeFile,{encoding:'utf8'});
 	//日志总大小
-	var logLength = fs.statSync(logFile).size;
+	var logsize = fs.statSync(logFile).size;
 	return {
 		lastTime : lastTime,
-		logStor : logStor,
-		logLength : logLength
+		lastSize : lastSize,
+		logsize : logsize
 	}
 }
 

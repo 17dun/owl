@@ -5,9 +5,10 @@ var readline = require('readline');
 var fs = require('fs');
 var querystring = require('querystring');
 var mysql = require('mysql');
-var logSrc = 'logs/owl-18.log';
-var lineSrc = 'line.data';
 
+var logFile = 'logs/owl-18.log';
+var logSizeFile = 'size.data';
+var logLineFile = 'line.data';
 
 
 //连接数据库
@@ -21,12 +22,12 @@ var connection = mysql.createConnection({
 
 //查询上次读取的行号
 function  getLastLine(){
-  return ~~fs.readFileSync(lineSrc,{encoding:'utf8'});
+  return ~~fs.readFileSync(logLineFile,{encoding:'utf8'});
 }
 
-//查询上次读取的行号
+//设置本次处理到的行号
 function  setLastLine(num){
-  fs.writeFile(lineSrc,num,function(err){
+  fs.writeFile(logLineFile,num,function(err){
     if(err){
       console.log('写入行号错误' + err);  
     }else{  
@@ -35,30 +36,38 @@ function  setLastLine(num){
   })
 }
 
+//设置本次处理日志的大小
+function  setLastSize(num){
+  fs.writeFile(logSizeFile,num,function(err){
+    if(err){
+      console.log('写入size错误' + err);  
+    }
+  })
+}
 
 
-fs.exists(lineSrc, function (exists) {
+
+
+fs.exists(logLineFile, function (exists) {
   if(exists){
     //之前执行过
     var lastLine = getLastLine();
-	runLog(lastLine);
+	   runLog(lastLine);
   }else{
     //首次执行
     runLog(0);
   }
 });
 
-
-
 //跑日志，参数为起始行
 function runLog(lastLine){
   //读文件
 	var rl = readline.createInterface({
-		input: fs.createReadStream('logs/owl-18.log'),
+		input: fs.createReadStream(logFile),
 		output: process.stdout,
 		terminal: false
 	});
-  	var currentNum = 1;
+  var currentNum = 1;
 	rl.on('line', function(line) {
 		//之前没有跑过的数据才入库
 		if(currentNum>lastLine){
@@ -85,6 +94,8 @@ function runLog(lastLine){
   //跑完后将新行号存入
   rl.on('close', function(line){
     setLastLine(currentNum-1);
+    var logsize = fs.statSync(logFile).size;
+    setLastSize(logsize);
   })
 }
 
