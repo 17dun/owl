@@ -61,7 +61,7 @@
               <td>{{$value.time}}</td>
               <td>{{$value.query}}</td>
               <td>{{$value.time}}</td>
-              <td>{{$value.net}}</td>
+              <td>{{$value.net | itemFormat:'nettype'}}</td>
               <td>{{$value.broswer}}</td>
               <td>{{$value.os}}</td>
               <td>{{$value.availWidth}}*{{$value.availHeight}}</td>
@@ -71,6 +71,7 @@
 	</script>
 
    <script src="js/jquery-1.11.2.js"></script>
+   <script src="js/conf.js"></script>
    <script src="js/template.js"></script>
    <script>
 	var index = {
@@ -88,9 +89,7 @@
 				var data = {
 					list : json
 				}
-
 				var sessionListHtml = template('sessionListTpl', data);
-
 				$('#sesionListDataBox').html(sessionListHtml);
 			});
 		}

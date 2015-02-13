@@ -39,8 +39,6 @@ function getActionByGuid(req,res){
 	});
 }
 
-
-
 function getTableData(req,res){
 	connection.query('SELECT count(id) as sessionLength FROM `sessions` where 1=1', function(err, rows) {
 	  var obj = getLogStatus();

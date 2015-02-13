@@ -371,12 +371,12 @@ var OWL = {
 	 */
 	sendActionData : function(flag){
 		var me = this;
+		var sendTime = new Date().getTime();
 		if(flag){
-			me.sendData('guid='+me.guid+'&dataType=actions&isClose=1&actions='+me.actionBuffer.join('!'));
+			me.sendData('guid='+me.guid+'&dataType=actions&isClose=1&sendTime='+sendTime+'&actions='+me.actionBuffer.join('!'));
 		}else{
-			me.sendData('guid='+me.guid+'&dataType=actions&actions='+me.actionBuffer.join('!'))
+			me.sendData('guid='+me.guid+'&dataType=actions&sendTime='+sendTime+'&actions='+me.actionBuffer.join('!'))
 		}
-		
 		me.clearActionBuffer();
 	},
 
