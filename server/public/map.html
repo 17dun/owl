@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html ng-app>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>OWL-专注移动端用户交互行为分析</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/dashboard.css" rel="stylesheet">
+        <style>
+            #userPage{ margin-left: -5000px; }
+            #click, #slide{position: absolute; left: 17px; top: 2px; }
+            #heatpic{display: inline-block; }
+            #slide{display: none;}
+        </style>
+    </head>
+    
+    <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container-fluid">
+            <div class="navbar-header">
+             <a class="navbar-brand" href="index.html">OWL-移动端用户交互行为平台</a>
+            </div>
+          </div>
+        </nav>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 main">
+                    <div class="col-sm-2">
+                        <div class="list-group">
+                            <a class="list-group-item active">触摸热力图</a>
+                            <a class="list-group-item">滑屏轨迹图</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-5" style="margin-left:50px">
+                        <div class="col-sm-7">
+                            <div class="device"></div>
+                            <div class="snap">
+                                <div class="snap-scroll">
+                                    <div class="snap-box">
+                                    <iframe id="userPage" name="userPage" src="snap/index.html"></iframe> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div id='click'><div id="heatpic"></div></div>
+                            <div id='slide'>
+                                <canvas id="slideCanvas"></canvas>
+                            </div>
+                       </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="js/jquery-1.11.2.js"></script>
+        <script src="js/easeljs-0.8.0.combined.js"></script>
+        <script src="js/heatmap.js"></script>
+        <script src="js/map.js"></script>
+    </body>
+</html>

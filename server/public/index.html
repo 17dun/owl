@@ -21,30 +21,42 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">单用户行为分析</a></li>
-            <li><a href="#">多用户行为分析</a></li>
-            <li><a href="task.html">数据任务状态</a></li>
+            <li class="active"><a href="index.html">实验管理</a></li>
+            <li><a href="task.html">数据管理</a></li>
+            <li><a href="#">用户管理</a></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h2 class="sub-header">Session List</h2>
+          <h2 class="sub-header">实验列表</h2>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
                 <tr>
-                 <th>query</th>
-                  <th>Baiduid</th>
-                  <th>访问时间</th>
-                  <th>行为时长</th>
-                  <th>网络</th>
-                  <th>浏览器</th>
-                  <th>平台</th>
-                  <th>分辨率</th>
+                  <th>实验名称</th>
+                  <th>所属产品线</th>
+                  <th>创建时间</th>
+                  <th>创建人</th>
+                  <th>生效时间</th>
+                  <th>抽样率</th>
+                  <th>SESSION量</th>
+                  <th>状态</th>
                   <th>操作</th>
                 </tr>
               </thead>
-              <tbody id="sesionListDataBox">
-               	
+              <tbody id="dataBox">
+               	<tr>
+               		<td>wise结果页用户行为实验</td>
+               		<td>wise</td>
+               		<td>2015-2-13</td>
+               		<td>xiaoguang01</td>
+               		<td>2015-2-13~2015-3-13</td>
+               		<td>5%</td>
+               		<td>100</td>
+               		<td>运行中</td>
+               		<td>
+               		<a class="runBtn btn btn-success btn-xs" href="single.html">查看结果</a>
+               		</td>
+               	</tr>
               </tbody>
             </table>
           </div>
@@ -52,50 +64,6 @@
       </div>
     </div>
   </body>
-
-
-  	<script id="sessionListTpl" type="text/html">
-  		{{each list}}
-        	<tr>
-        	  <td>{{$value.query}}</td>
-              <td><a href="">{{$value.ip}}</a></td>
-              <td>{{$value.time}}</td>
-              
-              <td>{{$value.time}}</td>
-              <td>{{$value.net | itemFormat:'nettype'}}</td>
-              <td>{{$value.broswer}}</td>
-              <td>{{$value.os}}</td>
-              <td>{{$value.availWidth}}*{{$value.availHeight}}</td>
-              <td><a class="btn btn-default btn-sm" href="session.html#{{$value.guid}}">回放</a> <a class="btn btn-default btn-sm" href="map.html#{{$value.guid}}">分析</a></td>
-            </tr>
-         {{/each}}
-	</script>
-
+  	
    <script src="js/jquery-1.11.2.js"></script>
-   <script src="js/conf.js"></script>
-   <script src="js/template.js"></script>
-   <script>
-	var index = {
-		init : function(){
-			var me = this;
-			me.bindEvent();
-			me.getSessionList();
-		},
-		bindEvent : function(){
-		},
-		//获取actions数据
-		getSessionList : function(){
-			var me = this;
-			$.getJSON('http://182.254.209.32:9998/?method=getSessionList',function(json){
-				var data = {
-					list : json
-				}
-				var sessionListHtml = template('sessionListTpl', data);
-				$('#sesionListDataBox').html(sessionListHtml);
-			});
-		}
-
-	}
-	index.init();
-	</script>
 </html>

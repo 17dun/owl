@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>OWL-专注移动端用户交互行为分析</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/dashboard.css" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="index.html">OWL-移动端用户交互行为平台</a>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="single.html">单session分析</a></li>
+            <li><a href="multiple.html">多session用户分析</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		  <form class="form-inline">
+			  <div class="form-group">
+			    <label for="exampleInputName2">query</label>
+			    <input type="text" class="form-control input-sm">
+			  </div>
+			  <div class="form-group">
+			    <label for="exampleInputEmail2">Baiduid</label>
+			    <input type="email" class="form-control input-sm">
+			  </div>
+			  <div class="form-group">
+			    <label for="exampleInputEmail2">网络类型</label>
+			    <select class="form-control input-sm">
+			    	<option>wifi</option>
+			    	<option>2G</option>
+			    	<option>3G</option>
+			    </select>
+			  </div>
+			  <div class="form-group">
+			    <label for="exampleInputEmail2">分辨率</label>
+			    <select class="form-control input-sm">
+			    	<option>小屏</option>
+			    	<option>大屏</option>
+			    	<option>超大屏</option>
+			    </select>
+			  </div>
+			  <div class="form-group">
+			    <label for="exampleInputEmail2">浏览器</label>
+			    <select class="form-control input-sm">
+			    	<option>UC</option>
+			    </select>
+			  </div>
+			  <button type="submit" class="btn btn-primary btn-sm">查询</button>
+			</form>
+          <div style="margin-top:20px;" class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                 <th>query</th>
+                  <th>ip</th>
+                  <th>访问时间</th>
+                  <th>行为时长</th>
+                  <th>网络</th>
+                  <th>浏览器</th>
+                  <th>平台</th>
+                  <th>分辨率</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody id="sesionListDataBox">
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  	<script id="sessionListTpl" type="text/html">
+  		{{each list}}
+        	<tr>
+        	  <td>{{$value.query}}</td>
+              <td><a href="">{{$value.ip}}</a></td>
+              <td>{{$value.time}}</td>
+              <td>{{$value.time}}</td>
+              <td>{{$value.net | itemFormat:'nettype'}}</td>
+              <td>{{$value.broswer}}</td>
+              <td>{{$value.os}}</td>
+              <td>{{$value.availWidth}}*{{$value.availHeight}}</td>
+              <td><a class="btn btn-primary btn-xs" href="play.html#{{$value.guid}}">回放</a> <a class="btn btn-primary btn-xs" href="map.html#{{$value.guid}}@{{$value.availWidth}}@{{$value.availHeight}}">分析</a></td>
+            </tr>
+         {{/each}}
+	</script>
+
+   <script src="js/jquery-1.11.2.js"></script>
+   <script src="js/conf.js"></script>
+   <script src="js/template.js"></script>
+   <script>
+	var index = {
+		init : function(){
+			var me = this;
+			me.bindEvent();
+			me.getSessionList();
+		},
+		bindEvent : function(){
+		},
+		//获取actions数据
+		getSessionList : function(){
+			var me = this;
+			$.getJSON('http://182.254.209.32:9998/?method=getSessionList',function(json){
+				var data = {
+					list : json
+				}
+				var sessionListHtml = template('sessionListTpl', data);
+				$('#sesionListDataBox').html(sessionListHtml);
+			});
+		}
+
+	}
+	index.init();
+	</script>
+</html>

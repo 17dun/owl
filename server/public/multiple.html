@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>OWL-专注移动端用户交互行为分析</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/dashboard.css" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="index.html">OWL-移动端用户交互行为平台</a>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li><a href="single.html">单session分析</a></li>
+            <li class="active"><a href="multiple.html">多session用户分析</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		    <form class="form-inline">
+			  <div class="form-group">
+			    <label for="exampleInputEmail2">网络类型</label>
+			    <select class="form-control input-sm">
+			    	<option>wifi</option>
+			    	<option>2G</option>
+			    	<option>3G</option>
+			    </select>
+			  </div>
+			  <div class="form-group">
+			    <label for="exampleInputEmail2">分辨率</label>
+			    <select class="form-control input-sm">
+			    	<option>小屏</option>
+			    	<option>大屏</option>
+			    	<option>超大屏</option>
+			    </select>
+			  </div>
+			  <div class="form-group">
+			    <label for="exampleInputEmail2">浏览器</label>
+			    <select class="form-control input-sm">
+			    	<option>UC</option>
+			    </select>
+			  </div>
+        <div class="form-group">
+          <label for="exampleInputEmail2">性别</label>
+          <select class="form-control input-sm">
+            <option>男</option>
+            <option>女</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail2">性能</label>
+          <select class="form-control input-sm">
+            <option>低性能</option>
+            <option>高性能</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail2">活跃度</label>
+          <select class="form-control input-sm">
+            <option>活跃用户</option>
+            <option>低活跃用户</option>
+          </select>
+        </div>
+			  <button type="submit" class="btn btn-primary btn-sm">绘制</button>
+			</form>
+ <div class="col-sm-5" style="margin-top:50px">
+              <div class="col-sm-7">
+                <div class="device"></div>
+                <div class="snap">
+                  <div class="snap-scroll">
+                  <div class="snap-box">
+                    <iframe src="snap/index.html" width="375" height="10000" scrolling="none" frameborder="0" name="main"></iframe> 
+                    </div>
+                    </div>
+                </div>
+                <div class="" style="width:375px;top: 138px;left: 59px;height:667px;z-index:99999;position:absolute;">
+                  <canvas id="myCanvas" width="375" height="667"></canvas>
+                </div>
+               </div>
+        </div>
+
+
+        </div>
+
+      </div>
+       
+    </div>
+  </body>
+</html>
