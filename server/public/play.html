@@ -99,6 +99,19 @@
             </div>
           </div>
         </div>
+
+        <div class="col-sm-3">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">分析</h3>
+            </div>
+            <div class="panel-body">
+              <div class="device-tools">
+               <a id="mapBtn" target="_blank" href="#">打开分析视图</a>
+              </div>
+            </div>
+          </div>
+        </div>
         
         </div>
       </div>
@@ -123,6 +136,7 @@
 		init : function(){
 			var me = this;
 			me.guid = location.hash.substr(1)
+			$('#mapBtn')[0].href = 'map.html#'+location.hash.substr(1)+'@320@568';
 			me.bindEvent();
       		//me.stageInit();
 		},

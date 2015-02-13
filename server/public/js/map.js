@@ -100,7 +100,7 @@
 		var container = new createjs.Container();
 		var shape = new createjs.Shape();
 		var wid = $("#userPage").width(), hei = $("#userPage").height();
-		shape.graphics.setStrokeStyle(7, "round", "round").beginStroke(createjs.Graphics.getRGB(243, 163, 163, 1));
+		shape.graphics.setStrokeStyle(7, "round", "round").beginStroke(createjs.Graphics.getRGB(243, 24, 24, 1));
 		moveData.forEach(function(m, i, ms){
 			var arr = m.split("*");
 			var	x = parseInt(arr[4],36),
@@ -115,7 +115,6 @@
 		shape.filters = [blurFilter];
 		var bounds = blurFilter.getBounds();
 		shape.cache(90+bounds.x, 50+bounds.y, wid+bounds.width, hei+bounds.height);
-
 		container.addChild(shape);
 		return container;
 	}
